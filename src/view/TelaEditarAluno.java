@@ -1,13 +1,12 @@
-package academia.view;
+package view;
 
-import academia.control.ControleTelaEditarAluno;
+import control.ControleTelaEditarAluno;
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
-import javax.swing.text.MaskFormatter;
+import util.Util;
 
 /**
  *
@@ -45,10 +44,12 @@ public class TelaEditarAluno extends JInternalFrame {
     private JButton BuscarB;
 
     private ControleTelaEditarAluno controle;
-    public TelaEditarAluno() {
-    
-        controle = new ControleTelaEditarAluno(this);
+    private Util util;
 
+    public TelaEditarAluno() {
+
+        controle = new ControleTelaEditarAluno(this);
+        util = new Util();
         imagem = new JLabel();
         add(imagem);
 
@@ -63,20 +64,18 @@ public class TelaEditarAluno extends JInternalFrame {
         buscarL = new JLabel("Buscar / CPF:");
         alturaL = new JLabel("Altura:");
         pesoL = new JLabel("Peso:");
-        
+
         nomeF = new JTextField(39);
         senhaF = new JTextField(15);
-        telefoneF = new JFormattedTextField(Mascara("(##)#####-####"));
+        telefoneF = new JFormattedTextField(util.Mascara("(##)#####-####"));
         ruaF = new JTextField(30);
         bairroF = new JTextField(30);
-        numeroF = new JFormattedTextField(Mascara("######"));
-        cepF = new JFormattedTextField(Mascara("##.###-###"));
-        buscarT = new JFormattedTextField(Mascara("###.###.###-##"));
+        numeroF = new JFormattedTextField(util.CosumeLetter());
+        cepF = new JFormattedTextField(util.Mascara("##.###-###"));
+        buscarT = new JFormattedTextField(util.Mascara("###.###.###-##"));
         alturaF = new JTextField();
         pesoF = new JTextField();
-        
-        
-        
+
         cadastrarB = new JButton("edtar");
         cadastrarB.addActionListener(controle);
 
@@ -102,13 +101,13 @@ public class TelaEditarAluno extends JInternalFrame {
 
         imagem.add(telefoneL);
         imagem.add(telefoneF);
-        
+
         imagem.add(alturaL);
         imagem.add(alturaF);
-        
+
         imagem.add(pesoL);
         imagem.add(pesoF);
-        
+
         imagem.add(enderecoL);
 
         imagem.add(ruaL);
@@ -144,12 +143,10 @@ public class TelaEditarAluno extends JInternalFrame {
 
         alturaL.setBounds(10, 100, 53, 10);
         alturaF.setBounds(60, 95, 60, 20);
-        
+
         pesoL.setBounds(150, 100, 53, 10);
         pesoF.setBounds(190, 95, 60, 20);
-        
-        
-        
+
         enderecoL.setBounds(10, 125, 83, 10);
 
         ruaL.setBounds(10, 150, 38, 10);
@@ -176,17 +173,6 @@ public class TelaEditarAluno extends JInternalFrame {
         setResizable(false);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-    }
-
-    public MaskFormatter Mascara(String Mascara) {
-        MaskFormatter F_Mascara = new MaskFormatter();
-        try {
-            F_Mascara.setMask(Mascara); //Atribui a mascara
-            F_Mascara.setPlaceholderCharacter(' '); //Caracter para preencimento 
-        } catch (Exception excecao) {
-            excecao.printStackTrace();
-        }
-        return F_Mascara;
     }
 
     public String getNomeF() {
@@ -284,6 +270,5 @@ public class TelaEditarAluno extends JInternalFrame {
     public void setPesoF(String pesoF) {
         this.pesoF.setText(pesoF);
     }
-    
 
 }

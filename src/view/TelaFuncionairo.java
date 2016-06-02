@@ -1,6 +1,6 @@
-package academia.view;
+package view;
 
-import academia.control.ControleTelaFunconario;
+import control.ControleTelaFunconario;
 import java.awt.Toolkit;
 import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;

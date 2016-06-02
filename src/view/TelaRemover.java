@@ -1,12 +1,12 @@
-package academia.view;
+package view;
 
-import academia.control.ControleTelaRemover;
+import control.ControleTelaRemover;
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import javax.swing.text.MaskFormatter;
+import util.Util;
 
 /**
  *
@@ -44,9 +44,11 @@ public class TelaRemover extends JInternalFrame {
     private JButton BuscarB;
 
     private ControleTelaRemover controle;
-    public TelaRemover() {
-    controle = new ControleTelaRemover(this);
+    private Util util;
 
+    public TelaRemover() {
+        controle = new ControleTelaRemover(this);
+        util = new Util();
         imagem = new JLabel();
         add(imagem);
 
@@ -64,34 +66,33 @@ public class TelaRemover extends JInternalFrame {
 
         nomeF = new JTextField(39);
         nomeF.setEditable(false);
-        
+
         senhaF = new JTextField(15);
         senhaF.setEditable(false);
-        
-        telefoneF = new JFormattedTextField(Mascara("(##)#####-####"));
+
+        telefoneF = new JFormattedTextField(util.Mascara("(##)#####-####"));
         telefoneF.setEditable(false);
-        
+
         ruaF = new JTextField(30);
         ruaF.setEditable(false);
-        
+
         bairroF = new JTextField(30);
         bairroF.setEditable(false);
-        
-        numeroF = new JFormattedTextField(Mascara("######"));
+
+        numeroF = new JFormattedTextField(util.CosumeLetter());
         numeroF.setEditable(false);
-        
-        cepF = new JFormattedTextField(Mascara("##.###-###"));
+
+        cepF = new JFormattedTextField(util.Mascara("##.###-###"));
         cepF.setEditable(false);
-        
-        buscarT = new JFormattedTextField(Mascara("###.###.###-##"));
-        
+
+        buscarT = new JFormattedTextField(util.Mascara("###.###.###-##"));
+
         alturaF = new JTextField();
         alturaF.setEditable(false);
-        
+
         pesoF = new JTextField();
         pesoF.setEditable(false);
-        
-        
+
         Remover = new JButton("Remover");
         Remover.addActionListener(controle);
 
@@ -191,17 +192,6 @@ public class TelaRemover extends JInternalFrame {
 
     }
 
-     public MaskFormatter Mascara(String Mascara) {
-        MaskFormatter F_Mascara = new MaskFormatter();
-        try {
-            F_Mascara.setMask(Mascara); //Atribui a mascara
-            F_Mascara.setPlaceholderCharacter(' '); //Caracter para preencimento 
-        } catch (Exception excecao) {
-            excecao.printStackTrace();
-        }
-        return F_Mascara;
-    }
-
     public String getNomeF() {
         return nomeF.getText();
     }
@@ -297,5 +287,5 @@ public class TelaRemover extends JInternalFrame {
     public void setPesoF(String pesoF) {
         this.pesoF.setText(pesoF);
     }
-    
+
 }

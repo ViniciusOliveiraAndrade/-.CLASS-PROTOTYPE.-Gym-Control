@@ -1,12 +1,12 @@
-package academia.view;
+package view;
 
-import academia.control.ControleTelaEditarFI;
+import control.ControleTelaEditarFI;
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import javax.swing.text.MaskFormatter;
+import util.Util;
 
 /**
  *
@@ -40,10 +40,11 @@ public class TelaEditarFI extends JInternalFrame {
     private JButton BuscarB;
 
     private ControleTelaEditarFI controle;
+    private Util util;
 
     public TelaEditarFI() {
         controle = new ControleTelaEditarFI(this);
-
+        util = new Util();
         imagem = new JLabel();
         add(imagem);
 
@@ -59,12 +60,12 @@ public class TelaEditarFI extends JInternalFrame {
 
         nomeF = new JTextField(39);
         senhaF = new JTextField(15);
-        telefoneF = new JFormattedTextField(Mascara("(##)#####-####"));
+        telefoneF = new JFormattedTextField(util.Mascara("(##)#####-####"));
         ruaF = new JTextField(30);
         bairroF = new JTextField(30);
-        numeroF = new JFormattedTextField(Mascara("######"));
-        cepF = new JFormattedTextField(Mascara("##.###-###"));
-        buscarT = new JFormattedTextField(Mascara("###.###.###-##"));
+        numeroF = new JFormattedTextField(util.CosumeLetter());
+        cepF = new JFormattedTextField(util.Mascara("##.###-###"));
+        buscarT = new JFormattedTextField(util.Mascara("###.###.###-##"));
         cadastrarB = new JButton("edtar");
         cadastrarB.addActionListener(controle);
 
@@ -150,17 +151,6 @@ public class TelaEditarFI extends JInternalFrame {
         setResizable(false);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-    }
-
-    public MaskFormatter Mascara(String Mascara) {
-        MaskFormatter F_Mascara = new MaskFormatter();
-        try {
-            F_Mascara.setMask(Mascara); //Atribui a mascara
-            F_Mascara.setPlaceholderCharacter(' '); //Caracter para preencimento 
-        } catch (Exception excecao) {
-            excecao.printStackTrace();
-        }
-        return F_Mascara;
     }
 
     public String getNomeF() {

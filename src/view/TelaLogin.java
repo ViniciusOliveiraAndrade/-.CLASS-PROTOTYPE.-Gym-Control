@@ -1,6 +1,6 @@
-package academia.view;
+package view;
 
-import academia.control.ControleTelaLogin;
+import control.ControleTelaLogin;
 import java.awt.Color;
 import java.awt.Toolkit;
 import javax.swing.ImageIcon;
@@ -9,7 +9,7 @@ import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
-import javax.swing.text.MaskFormatter;
+import util.Util;
 
 public class TelaLogin extends JFrame {
 
@@ -28,13 +28,14 @@ public class TelaLogin extends JFrame {
     private JPasswordField senhaField;
     private JLabel imagem;
     private ControleTelaLogin controle;
-
+    private Util util;
+    
     public TelaLogin() {
 //        setLayout(new FlowLayout());
         imagem = new JLabel();
-
+        util = new Util();
         loginLabel = new JLabel("CPF:");
-        loginField = new JFormattedTextField(Mascara("###.###.###-##"));
+        loginField = new JFormattedTextField(util.Mascara("###.###.###-##"));
 
         senhaLabel = new JLabel("SENHA:");
 
@@ -90,16 +91,6 @@ public class TelaLogin extends JFrame {
 	 * =================================================== Gets & Sets =============================================================
 	 * 
 	 * */
-    public MaskFormatter Mascara(String Mascara) {
-        MaskFormatter F_Mascara = new MaskFormatter();
-        try {
-            F_Mascara.setMask(Mascara); //Atribui a mascara
-            F_Mascara.setPlaceholderCharacter(' '); //Caracter para preencimento 
-        } catch (Exception excecao) {
-            excecao.printStackTrace();
-        }
-        return F_Mascara;
-    }
 
     public String getLoginField() {
         return loginField.getText().replaceAll("[.-]", "");

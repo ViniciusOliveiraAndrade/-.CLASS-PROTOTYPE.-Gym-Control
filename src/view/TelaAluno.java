@@ -1,4 +1,4 @@
-package academia.view;
+package view;
 
 import java.awt.FlowLayout;
 import java.awt.Toolkit;
