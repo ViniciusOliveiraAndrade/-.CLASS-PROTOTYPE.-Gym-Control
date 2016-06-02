@@ -1,6 +1,6 @@
-package view;
+package academia.view;
 
-import control.ControleTelaEditarAluno;
+import academia.control.ControleTelaEditarAluno;
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.JInternalFrame;
@@ -32,7 +32,7 @@ public class TelaEditarAluno extends JInternalFrame {
     private JFormattedTextField telefoneF;
     private JTextField ruaF;
     private JTextField bairroF;
-    private JFormattedTextField numeroF;
+    private JTextField numeroF;
     private JFormattedTextField cepF;
     private JFormattedTextField buscarT;
     private JTextField alturaF;
@@ -70,7 +70,9 @@ public class TelaEditarAluno extends JInternalFrame {
         telefoneF = new JFormattedTextField(util.Mascara("(##)#####-####"));
         ruaF = new JTextField(30);
         bairroF = new JTextField(30);
-        numeroF = new JFormattedTextField(util.CosumeLetter());
+        numeroF = new JTextField(8);
+        numeroF.addKeyListener(util.CosumeLetter());
+        
         cepF = new JFormattedTextField(util.Mascara("##.###-###"));
         buscarT = new JFormattedTextField(util.Mascara("###.###.###-##"));
         alturaF = new JTextField();

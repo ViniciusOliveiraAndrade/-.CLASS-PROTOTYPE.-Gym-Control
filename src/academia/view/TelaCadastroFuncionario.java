@@ -1,6 +1,6 @@
-package view;
+package academia.view;
 
-import control.ControleTelaCadastroInstrutor;
+import academia.control.ControleTelaCadastroFuncionario;
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.JInternalFrame;
@@ -12,7 +12,7 @@ import util.Util;
  *
  * @author vinicius
  */
-public class TelaCadastroInstrutor extends JInternalFrame {
+public class TelaCadastroFuncionario extends JInternalFrame {
 
     private JLabel nomeL;
     private JLabel cpfL;
@@ -31,20 +31,21 @@ public class TelaCadastroInstrutor extends JInternalFrame {
     private JFormattedTextField telefoneF;
     private JTextField ruaF;
     private JTextField bairroF;
-    private JFormattedTextField numeroF;
+    private JTextField numeroF;
     private JFormattedTextField cepF;
 
     private JButton cadastrarB;
     private JButton limparB;
     private JButton sairB;
 
-    private ControleTelaCadastroInstrutor controle;
+    private ControleTelaCadastroFuncionario controle;
     private Util util;
 
-    public TelaCadastroInstrutor() {
+    public TelaCadastroFuncionario() {
 
-        controle = new ControleTelaCadastroInstrutor(this);
+        controle = new ControleTelaCadastroFuncionario(this);
         util = new Util();
+
         imagem = new JLabel();
         add(imagem);
 
@@ -64,7 +65,9 @@ public class TelaCadastroInstrutor extends JInternalFrame {
         telefoneF = new JFormattedTextField(util.Mascara("(##)#####-####"));
         ruaF = new JTextField(30);
         bairroF = new JTextField(30);
-        numeroF = new JFormattedTextField(util.CosumeLetter());
+        numeroF = new JTextField(8);
+        numeroF.addKeyListener(util.CosumeLetter());
+        
         cepF = new JFormattedTextField(util.Mascara("##.###-###"));
 
         cadastrarB = new JButton("Cadastrar");
@@ -140,7 +143,7 @@ public class TelaCadastroInstrutor extends JInternalFrame {
 
         cadastrarB.setBounds(380, 180, 100, 30);
 
-        setTitle("Cadastro Instrutor");
+        setTitle("Cadastro Funcioanrio");
         setSize(550, 300);
         setVisible(true);
         setResizable(false);

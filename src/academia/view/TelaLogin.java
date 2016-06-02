@@ -1,6 +1,6 @@
-package view;
+package academia.view;
 
-import control.ControleTelaLogin;
+import academia.control.ControleTelaLogin;
 import java.awt.Color;
 import java.awt.Toolkit;
 import javax.swing.ImageIcon;

@@ -1,6 +1,6 @@
-package view;
+package academia.view;
 
-import control.ControleTelaCadastroFuncionario;
+import academia.control.ControleTelaEditarFI;
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.JInternalFrame;
@@ -12,10 +12,9 @@ import util.Util;
  *
  * @author vinicius
  */
-public class TelaCadastroFuncionario extends JInternalFrame {
+public class TelaEditarFI extends JInternalFrame {
 
     private JLabel nomeL;
-    private JLabel cpfL;
     private JLabel senhaL;
     private JLabel enderecoL;
     private JLabel telefoneL;
@@ -24,33 +23,32 @@ public class TelaCadastroFuncionario extends JInternalFrame {
     private JLabel numeroL;
     private JLabel cepL;
     private JLabel imagem;
+    private JLabel buscarL;
 
     private JTextField nomeF;
-    private JFormattedTextField cpfF;
     private JTextField senhaF;
     private JFormattedTextField telefoneF;
     private JTextField ruaF;
     private JTextField bairroF;
-    private JFormattedTextField numeroF;
+    private JTextField numeroF;
     private JFormattedTextField cepF;
+    private JFormattedTextField buscarT;
 
     private JButton cadastrarB;
     private JButton limparB;
     private JButton sairB;
+    private JButton BuscarB;
 
-    private ControleTelaCadastroFuncionario controle;
+    private ControleTelaEditarFI controle;
     private Util util;
 
-    public TelaCadastroFuncionario() {
-
-        controle = new ControleTelaCadastroFuncionario(this);
+    public TelaEditarFI() {
+        controle = new ControleTelaEditarFI(this);
         util = new Util();
-
         imagem = new JLabel();
         add(imagem);
 
         nomeL = new JLabel("Nome:");
-        cpfL = new JLabel("CPF:");
         senhaL = new JLabel("Senha:");
         enderecoL = new JLabel("Endereço:");
         telefoneL = new JLabel("Telefone/Celular:");
@@ -58,17 +56,19 @@ public class TelaCadastroFuncionario extends JInternalFrame {
         bairroL = new JLabel("Bairro:");
         numeroL = new JLabel("N°:");
         cepL = new JLabel("CEP:");
+        buscarL = new JLabel("Buscar / CPF:");
 
         nomeF = new JTextField(39);
-        cpfF = new JFormattedTextField(util.Mascara("###.###.###-##"));
         senhaF = new JTextField(15);
         telefoneF = new JFormattedTextField(util.Mascara("(##)#####-####"));
         ruaF = new JTextField(30);
         bairroF = new JTextField(30);
-        numeroF = new JFormattedTextField(util.CosumeLetter());
+        numeroF = new JTextField(8);
+        numeroF.addKeyListener(util.CosumeLetter());
+        
         cepF = new JFormattedTextField(util.Mascara("##.###-###"));
-
-        cadastrarB = new JButton("Cadastrar");
+        buscarT = new JFormattedTextField(util.Mascara("###.###.###-##"));
+        cadastrarB = new JButton("edtar");
         cadastrarB.addActionListener(controle);
 
         limparB = new JButton("Limpar");
@@ -77,11 +77,16 @@ public class TelaCadastroFuncionario extends JInternalFrame {
         sairB = new JButton("sair");
         sairB.addActionListener(controle);
 
+        BuscarB = new JButton("Buscar");
+        BuscarB.addActionListener(controle);
+
+//=====================================adição ao label==========================
+        imagem.add(buscarL);
+        imagem.add(buscarT);
+        imagem.add(BuscarB);
+
         imagem.add(nomeL);
         imagem.add(nomeF);
-
-        imagem.add(cpfL);
-        imagem.add(cpfF);
 
         imagem.add(senhaL);
         imagem.add(senhaF);
@@ -108,43 +113,45 @@ public class TelaCadastroFuncionario extends JInternalFrame {
         imagem.add(sairB);
 
         imagem.add(cadastrarB);
+//=====================================set localização no label==========================        
+        buscarL.setBounds(10, 10, 95, 10);
+        buscarT.setBounds(105, 5, 170, 20);
+        BuscarB.setBounds(305, 5, 90, 20);
 
-        nomeL.setBounds(10, 10, 50, 10);
-        nomeF.setBounds(55, 6, 420, 20);
+        nomeL.setBounds(10, 50, 50, 10);
+        nomeF.setBounds(55, 46, 440, 20);
 
-        cpfL.setBounds(10, 35, 43, 10);
-        cpfF.setBounds(55, 30, 170, 20);
+        senhaL.setBounds(275, 75, 53, 10);
+        senhaF.setBounds(325, 70, 170, 20);
 
-        senhaL.setBounds(245, 35, 53, 10);
-        senhaF.setBounds(295, 30, 180, 20);
+        telefoneL.setBounds(10, 75, 140, 10);
+        telefoneF.setBounds(140, 70, 130, 20);
 
-        telefoneL.setBounds(10, 60, 140, 10);
-        telefoneF.setBounds(140, 55, 130, 20);
+        enderecoL.setBounds(10, 105, 83, 10);
 
-        enderecoL.setBounds(10, 85, 83, 10);
+        ruaL.setBounds(10, 130, 38, 10);
+        ruaF.setBounds(45, 125, 300, 20);
 
-        ruaL.setBounds(10, 110, 38, 10);
-        ruaF.setBounds(40, 105, 290, 20);
+        numeroL.setBounds(365, 130, 30, 10);
+        numeroF.setBounds(390, 125, 100, 20);
 
-        numeroL.setBounds(340, 110, 30, 10);
-        numeroF.setBounds(360, 105, 100, 20);
+        bairroL.setBounds(10, 155, 63, 10);
+        bairroF.setBounds(60, 150, 285, 20);
 
-        bairroL.setBounds(10, 135, 63, 10);
-        bairroF.setBounds(55, 130, 260, 20);
+        cepL.setBounds(355, 155, 41, 10);
+        cepF.setBounds(390, 150, 100, 20);
 
-        cepL.setBounds(320, 135, 41, 10);
-        cepF.setBounds(360, 130, 100, 20);
+        limparB.setBounds(20, 200, 90, 30);
 
-        limparB.setBounds(20, 180, 90, 30);
+        sairB.setBounds(200, 200, 90, 30);
 
-        sairB.setBounds(200, 180, 90, 30);
+        cadastrarB.setBounds(380, 200, 100, 30);
 
-        cadastrarB.setBounds(380, 180, 100, 30);
-
-        setTitle("Cadastro Funcioanrio");
-        setSize(550, 300);
+        setTitle("Editar Funcioanrio");
+        setSize(500, 270);
         setVisible(true);
         setResizable(false);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
 
     }
 
@@ -154,14 +161,6 @@ public class TelaCadastroFuncionario extends JInternalFrame {
 
     public void setNomeF(String a) {
         this.nomeF.setText(a);
-    }
-
-    public String getCpfF() {
-        return cpfF.getText().replaceAll("[.-]", "");
-    }
-
-    public void setCpfF(String a) {
-        this.cpfF.setText(a);
     }
 
     public String getSenhaF() {
@@ -216,24 +215,24 @@ public class TelaCadastroFuncionario extends JInternalFrame {
         return cadastrarB;
     }
 
-    public void setCadastrarB(JButton cadastrarB) {
-        this.cadastrarB = cadastrarB;
-    }
-
     public JButton getSairB() {
         return sairB;
-    }
-
-    public void setSairB(JButton sairB) {
-        this.sairB = sairB;
     }
 
     public JButton getLimparB() {
         return limparB;
     }
 
-    public void setLimparB(JButton limparB) {
-        this.limparB = limparB;
+    public String getBuscarT() {
+        return buscarT.getText().replaceAll("[.-]", "");
+    }
+
+    public void setBuscarT(String buscarT) {
+        this.buscarT.setText(buscarT);
+    }
+
+    public JButton getBuscarB() {
+        return BuscarB;
     }
 
 }

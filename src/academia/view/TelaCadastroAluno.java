@@ -1,6 +1,6 @@
-package view;
+package academia.view;
 
-import control.ControleTelaCadastroAluno;
+import academia.control.ControleTelaCadastroAluno;
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.JInternalFrame;
@@ -35,7 +35,7 @@ public class TelaCadastroAluno extends JInternalFrame {
     private JTextField pesoF;
     private JTextField ruaF;
     private JTextField bairroF;
-    private JFormattedTextField numeroF;
+    private JTextField numeroF;
     private JFormattedTextField cepF;
 
     private JButton cadastrarB;
@@ -72,7 +72,9 @@ public class TelaCadastroAluno extends JInternalFrame {
         pesoF = new JTextField(5);
         ruaF = new JTextField(30);
         bairroF = new JTextField(30);
-        numeroF = new JFormattedTextField(util.CosumeLetter());
+        numeroF = new JTextField(8);
+        numeroF.addKeyListener(util.CosumeLetter());
+        
         cepF = new JFormattedTextField(util.Mascara("##.###-###"));
 
         cadastrarB = new JButton("Cadastrar");
