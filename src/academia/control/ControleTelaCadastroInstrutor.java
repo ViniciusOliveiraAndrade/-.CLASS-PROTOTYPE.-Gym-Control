@@ -54,6 +54,7 @@ public class ControleTelaCadastroInstrutor implements ActionListener {
                 tela.setNumeroF("");
                 tela.setRuaF("");
                 tela.setBairroF("");
+                tela.setCpfF("");
       
             } catch (ConstraintViolationException constraintViolationException) {
                 JOptionPane.showMessageDialog(tela, "CPF Ja Cadastrado");

@@ -1,14 +1,12 @@
 package academia.control;
 
-import academia.HibernateUtil;
 import academia.model.Pessoa;
 import academia.view.TelaEditarAluno;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
-import org.hibernate.Criteria;
-import org.hibernate.criterion.Restrictions;
 import org.hibernate.exception.ConstraintViolationException;
+import util.Util;
 
 /**
  *
@@ -17,33 +15,15 @@ import org.hibernate.exception.ConstraintViolationException;
 public class ControleTelaEditarAluno implements ActionListener {
 
     private TelaEditarAluno tela;
+    private Util util;
 
     public ControleTelaEditarAluno(TelaEditarAluno telaEditarAluno) {
         this.tela = telaEditarAluno;
+        util = new Util();
     }
 
-    public void buscar(String cpf) {
-        Criteria crit = HibernateUtil.getSessionFactory().openSession().createCriteria(Pessoa.class);
-        crit.add(Restrictions.eq("cpf", cpf));
-        Pessoa p = Pessoa.pessoaDAO().getEntityByCriteria(crit);
 
-        if (p == null) {
-            JOptionPane.showMessageDialog(tela, "CPF não encontrado");
-        } else {
-            tela.setNomeF(p.getNome());
-            tela.setCepF(p.getEndereco().getCep());
-            tela.setSenhaF(p.getSenha());
-            tela.setTelefoneF(p.getTelefone());
-            tela.setNumeroF(String.valueOf(p.getEndereco().getNumero()));
-            tela.setRuaF(p.getEndereco().getRua());
-            tela.setBairroF(p.getEndereco().getBairro());
-            tela.setPesoF(String.valueOf(p.getPeso()));
-            tela.setAlturaF(String.valueOf(p.getAltura()));
-        }
-
-    }
 //==============================================================================
-
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == tela.getSairB()) {
             tela.dispose();
@@ -64,9 +44,8 @@ public class ControleTelaEditarAluno implements ActionListener {
 
         if (e.getSource() == tela.getCadastrarB()) {
 
-            Criteria crit = HibernateUtil.getSessionFactory().openSession().createCriteria(Pessoa.class);
-            crit.add(Restrictions.eq("cpf", tela.getBuscarT()));
-            Pessoa p = Pessoa.pessoaDAO().getEntityByCriteria(crit);
+            
+            Pessoa p = util.buscar(tela.getBuscarT(), 1);
 
             if (p == null) {
                 JOptionPane.showMessageDialog(tela, "CPF não encontrado");
@@ -103,7 +82,20 @@ public class ControleTelaEditarAluno implements ActionListener {
             }
         }
         if (e.getSource() == tela.getBuscarB()) {
-            buscar(tela.getBuscarT());
+            Pessoa p = util.buscar(tela.getBuscarT(), 1);
+            if (p == null) {
+                JOptionPane.showMessageDialog(tela, "CPF não encontrado");
+            } else {
+                tela.setNomeF(p.getNome());
+                tela.setCepF(p.getEndereco().getCep());
+                tela.setSenhaF(p.getSenha());
+                tela.setTelefoneF(p.getTelefone());
+                tela.setNumeroF(String.valueOf(p.getEndereco().getNumero()));
+                tela.setRuaF(p.getEndereco().getRua());
+                tela.setBairroF(p.getEndereco().getBairro());
+                tela.setPesoF(String.valueOf(p.getPeso()));
+                tela.setAlturaF(String.valueOf(p.getAltura()));
+            }
         }
 
     }
