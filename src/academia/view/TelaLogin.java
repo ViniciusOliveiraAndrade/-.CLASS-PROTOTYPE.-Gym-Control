@@ -78,12 +78,11 @@ public class TelaLogin extends JFrame {
 
         setTitle("Academia");
         setSize(290, 150);
-        setIconImage(new ImageIcon(Toolkit.getDefaultToolkit().getClass().getResource("/res/Icon.png")).getImage());
-        setVisible(true);
         setLocationRelativeTo(null);
+        setIconImage(new ImageIcon(Toolkit.getDefaultToolkit().getClass().getResource("/res/Icon.png")).getImage());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
-
+        setVisible(true);
     }
 
     /*

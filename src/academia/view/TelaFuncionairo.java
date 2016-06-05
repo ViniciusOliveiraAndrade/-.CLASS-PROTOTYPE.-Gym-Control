@@ -1,6 +1,8 @@
 package academia.view;
 
 import academia.control.ControleTelaFunconario;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
@@ -9,6 +11,7 @@ import javax.swing.JInternalFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JPanel;
 
 /**
  *
@@ -31,7 +34,8 @@ public class TelaFuncionairo extends JFrame {
     private ControleTelaFunconario controle;
 
     private JDesktopPane desk;
-
+    private JPanel pane;
+    private Dimension size;
 //    private ImageIcon icon;
     
     public TelaFuncionairo() {
@@ -44,9 +48,17 @@ public class TelaFuncionairo extends JFrame {
 
         cadastrarMenu = new JMenu("Cadastrar");
         cadastrarMenu.setMnemonic('C');
-
+        
+        size = new Dimension(Toolkit.getDefaultToolkit().getScreenSize());
+        
+        pane = new JPanel();
+        System.out.println(pane.getBackground().getColorSpace());
+        
         desk = new JDesktopPane();
-
+        desk.setSize(size.width-(size.width/4),size.height);
+        desk.setBackground(new Color(238,238,238));
+        desk.setLocation(0, 0);
+        
         cadastarFIntem = new JMenuItem("Cadastar Funcionario");
         cadastarFIntem.addActionListener(controle);
 
@@ -100,6 +112,7 @@ public class TelaFuncionairo extends JFrame {
         getContentPane().add(desk);
 
         setTitle("Academia: Funcionario");
+        setLayout(null);
         setSize(800, 500);
         setIconImage(new ImageIcon(Toolkit.getDefaultToolkit().getClass().getResource("/res/Icon.png")).getImage());
         setExtendedState( MAXIMIZED_BOTH );
