@@ -42,7 +42,7 @@ public class Pessoa implements Serializable {
     public Pessoa() {
     }
 
-    public Pessoa(String nome, String cpf, String telefone, String senha, Endereco endereco, double altura, double peso) {
+    public Pessoa(String nome, String cpf, String telefone, String senha, Endereco endereco, double altura, double peso,int tipo) {
         this.nome = nome;
         this.cpf = cpf;
         this.senha = senha;
@@ -50,29 +50,30 @@ public class Pessoa implements Serializable {
         this.altura = altura;
         this.peso = peso;
         this.telefone = telefone;
-
+        this.tipo = tipo;
     }
 
-    public Pessoa(String nome, String cpf, String telefone, String senha, Endereco endereco) {
+    public Pessoa(String nome, String cpf, String telefone, String senha, Endereco endereco,int tipo) {
         this.nome = nome;
         this.cpf = cpf;
         this.senha = senha;
         this.endereco = endereco;
         this.pagamento = pagamento;
         this.telefone = telefone;
+        this.tipo = tipo;
     }
 
-    public void criar(Endereco endereco) {
-        Endereco.enderecoDAO().save(endereco);
-        this.endereco = endereco;
-        pessoaDAO().save(this);
+//    public void criar(Pessoa p,Endereco endereco) {
+//        Endereco.enderecoDAO().save(endereco);
+//        p.setEndereco(endereco);
+//        pessoaDAO().save(p);
+//
+//    }
 
-    }
-
-    public void update() {
-//        this.endereco = endereco;
-        pessoaDAO().update(this);
-    }
+//    public void update(Pessoa p) {
+////        this.endereco = endereco;
+//        pessoaDAO().update(p);
+//    }
 
     public static InterfaceDAO<Pessoa> pessoaDAO() {
         InterfaceDAO<Pessoa> pessoaDAO = new HibernateDAO<Pessoa>(Pessoa.class, HibernateUtil.getSessionFactory().openSession());
