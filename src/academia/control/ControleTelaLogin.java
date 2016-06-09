@@ -1,6 +1,6 @@
 package academia.control;
 
-import academia.HibernateUtil;
+import academia.Academia;
 import academia.model.Pessoa;
 import academia.view.TelaAluno;
 import academia.view.TelaFuncionairo;
@@ -9,8 +9,6 @@ import academia.view.TelaLogin;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
-import org.hibernate.Criteria;
-import org.hibernate.criterion.Restrictions;
 
 /**
  *
@@ -28,13 +26,13 @@ public class ControleTelaLogin implements ActionListener {
    
     public void Logar(String cpf, String senha) {
         
-        Criteria crit = HibernateUtil.getSessionFactory().openSession().createCriteria(Pessoa.class);
-        crit.add(Restrictions.eq("cpf", cpf));
-        Pessoa p = Pessoa.pessoaDAO().getEntityByCriteria(crit);
+        
+        Pessoa p = ControlePessoa.buscarCPF(cpf);
 
         if (p == null) {
             JOptionPane.showMessageDialog(telaLogin, "CPf ou SENHA incorreto");
         } else if (p.getSenha().equals(senha)) {
+            Academia.pessoaLogada=p;
             tela(p.getTipo());
         } else {
             JOptionPane.showMessageDialog(telaLogin, "CPf ou SENHA incorreto");

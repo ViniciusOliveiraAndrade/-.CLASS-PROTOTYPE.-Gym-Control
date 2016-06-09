@@ -1,6 +1,7 @@
 package academia;
 
 import academia.control.Conect;
+import academia.model.Pessoa;
 import academia.view.TelaFuncionairo;
 import academia.view.TelaLogin;
 
@@ -10,6 +11,7 @@ import academia.view.TelaLogin;
  */
 public class Academia {
 
+    public static Pessoa pessoaLogada;
     public static void main(String[] args) {
         Conect c = new Conect();
         c.start();
