@@ -67,14 +67,14 @@ public class TelaEditarAluno extends JInternalFrame {
 
         nomeF = new JTextField(39);
         senhaF = new JTextField(15);
-        telefoneF = new JFormattedTextField(util.Mascara("(##)#####-####"));
+        telefoneF = new JFormattedTextField(util.mascara("(##)#####-####"));
         ruaF = new JTextField(30);
         bairroF = new JTextField(30);
         numeroF = new JTextField(8);
-        numeroF.addKeyListener(util.CosumeLetter());
+        numeroF.addKeyListener(util.cosumeLetter());
         
-        cepF = new JFormattedTextField(util.Mascara("##.###-###"));
-        buscarT = new JFormattedTextField(util.Mascara("###.###.###-##"));
+        cepF = new JFormattedTextField(util.mascara("##.###-###"));
+        buscarT = new JFormattedTextField(util.mascara("###.###.###-##"));
         alturaF = new JTextField();
         pesoF = new JTextField();
 

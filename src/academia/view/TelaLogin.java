@@ -35,7 +35,7 @@ public class TelaLogin extends JFrame {
         imagem = new JLabel();
         util = new Util();
         loginLabel = new JLabel("CPF:");
-        loginField = new JFormattedTextField(util.Mascara("###.###.###-##"));
+        loginField = new JFormattedTextField(util.mascara("###.###.###-##"));
 
         senhaLabel = new JLabel("SENHA:");
 

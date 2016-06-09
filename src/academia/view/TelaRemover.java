@@ -70,7 +70,7 @@ public class TelaRemover extends JInternalFrame {
         senhaF = new JTextField(15);
         senhaF.setEditable(false);
 
-        telefoneF = new JFormattedTextField(util.Mascara("(##)#####-####"));
+        telefoneF = new JFormattedTextField(util.mascara("(##)#####-####"));
         telefoneF.setEditable(false);
 
         ruaF = new JTextField(30);
@@ -82,10 +82,10 @@ public class TelaRemover extends JInternalFrame {
         numeroF = new JTextField(8);
         numeroF.setEditable(false);
 
-        cepF = new JFormattedTextField(util.Mascara("##.###-###"));
+        cepF = new JFormattedTextField(util.mascara("##.###-###"));
         cepF.setEditable(false);
 
-        buscarT = new JFormattedTextField(util.Mascara("###.###.###-##"));
+        buscarT = new JFormattedTextField(util.mascara("###.###.###-##"));
 
         alturaF = new JTextField();
         alturaF.setEditable(false);

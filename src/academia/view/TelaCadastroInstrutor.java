@@ -59,15 +59,15 @@ public class TelaCadastroInstrutor extends JInternalFrame {
         cepL = new JLabel("CEP:");
 
         nomeF = new JTextField(39);
-        cpfF = new JFormattedTextField(util.Mascara("###.###.###-##"));
+        cpfF = new JFormattedTextField(util.mascara("###.###.###-##"));
         senhaF = new JTextField(15);
-        telefoneF = new JFormattedTextField(util.Mascara("(##)#####-####"));
+        telefoneF = new JFormattedTextField(util.mascara("(##)#####-####"));
         ruaF = new JTextField(30);
         bairroF = new JTextField(30);
         numeroF = new JTextField(8);
-        numeroF.addKeyListener(util.CosumeLetter());
+        numeroF.addKeyListener(util.cosumeLetter());
         
-        cepF = new JFormattedTextField(util.Mascara("##.###-###"));
+        cepF = new JFormattedTextField(util.mascara("##.###-###"));
 
         cadastrarB = new JButton("Cadastrar");
         cadastrarB.addActionListener(controle);
