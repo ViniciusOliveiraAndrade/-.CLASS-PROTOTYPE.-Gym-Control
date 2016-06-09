@@ -1,12 +1,8 @@
 package util;
 
-import academia.HibernateUtil;
-import academia.model.Pessoa;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.text.MaskFormatter;
-import org.hibernate.Criteria;
-import org.hibernate.criterion.Restrictions;
 
 /**
  *
@@ -14,7 +10,7 @@ import org.hibernate.criterion.Restrictions;
  */
 public class Util {
 
-    public KeyAdapter CosumeLetter() {
+    public KeyAdapter cosumeLetter() {
         KeyAdapter keyAdapter = new KeyAdapter() {
 
             public void keyTyped(KeyEvent ev) {
@@ -28,7 +24,7 @@ public class Util {
         return keyAdapter;
     }
 
-    public MaskFormatter Mascara(String Mascara) {
+    public MaskFormatter mascara(String Mascara) {
         MaskFormatter F_Mascara = new MaskFormatter();
         try {
             F_Mascara.setMask(Mascara); //Atribui a mascara
@@ -39,10 +35,5 @@ public class Util {
         return F_Mascara;
     }
 
-    public Pessoa buscar(String cpf, int tipo) {
-        Criteria crit = HibernateUtil.getSessionFactory().openSession().createCriteria(Pessoa.class);
-        crit.add(Restrictions.eq("cpf", cpf)).add(Restrictions.eq("tipo",tipo));
-        Pessoa p = Pessoa.pessoaDAO().getEntityByCriteria(crit);
-        return p;
-    }
+    
 }

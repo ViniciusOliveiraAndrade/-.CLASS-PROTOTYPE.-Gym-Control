@@ -41,11 +41,10 @@ public class ControleTelaCadastroInstrutor implements ActionListener {
         if (e.getSource() == tela.getCadastrarB()) {
 
             Endereco endereco = new Endereco(tela.getRuaF(), tela.getBairroF(), Integer.parseInt(tela.getNumeroF()), tela.getCepF());
-            Pessoa p = new Pessoa(tela.getNomeF(), tela.getCpfF(), tela.getTelefoneF(), tela.getSenhaF(), null);
+            Pessoa p = new Pessoa(tela.getNomeF(), tela.getCpfF(), tela.getTelefoneF(), tela.getSenhaF(), null,3);
 
             try {
-                p.setTipo(3);
-                p.criar(endereco);
+                ControlePessoa.criar(p,endereco);
                 JOptionPane.showMessageDialog(tela, "Instrutor Cadastrado");
                 tela.setNomeF("");
                 tela.setCepF("");

@@ -40,7 +40,7 @@ public class ControleTelaCadastroAluno implements ActionListener {
         }
         if (e.getSource() == telaCadastro.getCadastrarB()) {
             Endereco endereco = new Endereco(telaCadastro.getRuaF(), telaCadastro.getBairroF(), Integer.parseInt(telaCadastro.getNumeroF()), telaCadastro.getCepF());
-            Pessoa p = new Pessoa(telaCadastro.getNomeF(), telaCadastro.getCpfF(), telaCadastro.getTelefoneF(), telaCadastro.getSenhaF(), null,telaCadastro.getAlturaF(),telaCadastro.getPesoF());
+            Pessoa p = new Pessoa(telaCadastro.getNomeF(), telaCadastro.getCpfF(), telaCadastro.getTelefoneF(), telaCadastro.getSenhaF(), null,telaCadastro.getAlturaF(),telaCadastro.getPesoF(),1);
             telaCadastro.setNomeF("");
             telaCadastro.setCepF("");
             telaCadastro.setCpfF("");
@@ -53,8 +53,7 @@ public class ControleTelaCadastroAluno implements ActionListener {
             telaCadastro.setAlturaF("");
             telaCadastro.setPesoF("");
             try {
-                p.setTipo(1);
-                p.criar(endereco);
+                ControlePessoa.criar(p,endereco);
                 JOptionPane.showMessageDialog(telaCadastro, "Usuario Cadastrado");
                 
             } catch (ConstraintViolationException constraintViolationException) {

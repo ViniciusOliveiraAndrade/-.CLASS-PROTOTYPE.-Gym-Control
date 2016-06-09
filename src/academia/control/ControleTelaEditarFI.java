@@ -6,7 +6,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import org.hibernate.exception.ConstraintViolationException;
-import util.Util;
 
 /**
  *
@@ -15,11 +14,10 @@ import util.Util;
 public class ControleTelaEditarFI implements ActionListener {
 
     private TelaEditarFI tela;
-    private Util util;
+    private Pessoa p;
 
     public ControleTelaEditarFI(TelaEditarFI tela) {
         this.tela = tela;
-        util = new Util();
     }
 
 //==============================================================================
@@ -39,10 +37,6 @@ public class ControleTelaEditarFI implements ActionListener {
         }
 
         if (e.getSource() == tela.getCadastrarB()) {
-            Pessoa p = util.buscar(tela.getBuscarT(), 3);
-            if (p == null) {
-                p = util.buscar(tela.getBuscarT(), 2);
-            }
             if (p == null) {
                 JOptionPane.showMessageDialog(tela, "CPF não encontrado");
             } else {
@@ -72,9 +66,9 @@ public class ControleTelaEditarFI implements ActionListener {
             }
         }
         if (e.getSource() == tela.getBuscarB()) {
-            Pessoa p = util.buscar(tela.getBuscarT(), 2);
+            p = ControlePessoa.buscar(tela.getBuscarT(), 2);
             if (p == null) {
-                p = util.buscar(tela.getBuscarT(), 3);
+                p = ControlePessoa.buscar(tela.getBuscarT(), 3);
             }
             if (p == null) {
                 JOptionPane.showMessageDialog(tela, "CPF não encontrado");
