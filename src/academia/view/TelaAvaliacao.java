@@ -11,7 +11,7 @@ import util.Util;
  *
  * @author vinicius
  */
-public class TelaAvaliação extends JInternalFrame {
+public class TelaAvaliacao extends JInternalFrame {
 
     private JLabel nomeL;
     private JLabel cpfL;
@@ -41,7 +41,7 @@ public class TelaAvaliação extends JInternalFrame {
     private JButton buscarPessoa;
     private Util util;
 
-    public TelaAvaliação() {
+    public TelaAvaliacao() {
 
         util = new Util();
         imagem = new JLabel();
