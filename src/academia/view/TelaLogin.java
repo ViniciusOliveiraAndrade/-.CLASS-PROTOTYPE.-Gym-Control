@@ -63,10 +63,11 @@ public class TelaLogin extends JFrame {
 
         loginLabel.setBounds(10, 13, 45, 15);
         loginField.setBounds(50, 8, 225, 20);
-
+        loginField.addKeyListener(controle.enterList());
+        
         senhaLabel.setBounds(10, 40, 60, 10);
         senhaField.setBounds(70, 35, 205, 20);
-
+        senhaField.addKeyListener(controle.enterList());
         limparButton.setBounds(20, 62, 120, 25);
         limparButton.setBackground(Color.red);
 
@@ -75,7 +76,9 @@ public class TelaLogin extends JFrame {
 
         logarButton.setBounds(45, 93, 200, 25);
         logarButton.setBackground(Color.GREEN);
-
+        
+        addKeyListener(controle.enterList());
+        
         setTitle("Academia");
         setSize(290, 150);
         setLocationRelativeTo(null);

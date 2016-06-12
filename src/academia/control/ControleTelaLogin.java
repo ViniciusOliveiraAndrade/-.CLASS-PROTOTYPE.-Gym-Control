@@ -8,6 +8,8 @@ import academia.view.TelaInstrutor;
 import academia.view.TelaLogin;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
 /**
@@ -23,6 +25,8 @@ public class ControleTelaLogin implements ActionListener {
     public ControleTelaLogin(TelaLogin tela) {
         this.telaLogin = tela;
     }
+    
+    
    
     public void Logar(String cpf, String senha) {
         
@@ -56,6 +60,24 @@ public class ControleTelaLogin implements ActionListener {
                 telaLogin.setVisible(false);
                 break;
         }
+    }
+    
+    public KeyAdapter enterList() {
+        KeyAdapter keyAdapter = new KeyAdapter() {
+            public void keyTyped(KeyEvent ev) {
+                if ((ev.getKeyCode() == KeyEvent.VK_ENTER)||(ev.getKeyCode() == 13)) {
+                Logar(telaLogin.getLoginField(), telaLogin.getSenhaField());
+                }
+            }
+            public void keyPressed(KeyEvent evt)
+            {
+                if((evt.getKeyCode() == KeyEvent.VK_ENTER)||(evt.getKeyCode() == 13))
+                {
+                Logar(telaLogin.getLoginField(), telaLogin.getSenhaField());
+                }
+            }
+        };
+        return keyAdapter;
     }
 
     public void actionPerformed(ActionEvent e) {
