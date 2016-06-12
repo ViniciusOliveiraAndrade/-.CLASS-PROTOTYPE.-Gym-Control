@@ -12,6 +12,7 @@ import academia.view.TelaLogin;
 public class Academia {
 
     public static Pessoa pessoaLogada;
+    
     public static void main(String[] args) {
         Conect c = new Conect();
         c.start();

@@ -1,5 +1,6 @@
 package academia.view;
 
+import academia.Academia;
 import academia.control.ControleTelaFunconario;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -35,6 +36,8 @@ public class TelaFuncionairo extends JFrame {
     private JDesktopPane desk;
 
     private Dimension size;
+    private PanelDeInformacao panelDeInformacao;
+    
 //    private ImageIcon icon;
     
     public TelaFuncionairo() {
@@ -49,12 +52,13 @@ public class TelaFuncionairo extends JFrame {
         cadastrarMenu.setMnemonic('C');
         
         size = new Dimension(Toolkit.getDefaultToolkit().getScreenSize());
+        panelDeInformacao = new PanelDeInformacao(Academia.pessoaLogada.getNome(),size);
         
         desk = new JDesktopPane();
         desk.setSize(size.width-(size.width/4),size.height);
         desk.setBackground(new Color(238,238,238));
         desk.setLocation(0, 0);
-        
+                
         cadastarFIntem = new JMenuItem("Cadastar Funcionario");
         cadastarFIntem.addActionListener(controle);
 
@@ -104,7 +108,7 @@ public class TelaFuncionairo extends JFrame {
         menuBar.add(cadastrarMenu);
         menuBar.add(editar);
         menuBar.add(remover);
-        
+        add(panelDeInformacao);
         getContentPane().add(desk);
 
         setTitle("Academia: Funcionario");
