@@ -116,10 +116,10 @@ public class TelaFuncionairo extends JFrame {
         setSize(800, 500);
         setIconImage(new ImageIcon(Toolkit.getDefaultToolkit().getClass().getResource("/res/Icon.png")).getImage());
         setExtendedState( MAXIMIZED_BOTH );
-        setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(true);
+        setVisible(true);
     }
 
     /*
