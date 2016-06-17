@@ -30,19 +30,17 @@ public class DadosPessoa implements Serializable{
     @OneToOne(mappedBy = "dados")
     private Pessoa pessoa;
 
+    public DadosPessoa() {
+    }
+
+    
+    
     public DadosPessoa(double braco, double quadril, double cintura, double coxa, double panturrilha) {
         this.braco = braco;
         this.quadril = quadril;
         this.cintura = cintura;
         this.coxa = coxa;
         this.panturrilha = panturrilha;
-    }
-        
-
-    
-    public static InterfaceDAO<DadosPessoa> dadosPessoaDAO() {
-        InterfaceDAO<DadosPessoa> dadosPessoaDAO = new HibernateDAO<DadosPessoa>(DadosPessoa.class, HibernateUtil.getSessionFactory().openSession());
-        return dadosPessoaDAO;
     }
 
     public double getBraco() {
@@ -93,5 +91,9 @@ public class DadosPessoa implements Serializable{
         this.pessoa = pessoa;
     }
     
+    public static InterfaceDAO<DadosPessoa> dadosPessoaDAO() {
+        InterfaceDAO<DadosPessoa> dadosPessoaDAO = new HibernateDAO<DadosPessoa>(DadosPessoa.class, HibernateUtil.getSessionFactory().openSession());
+        return dadosPessoaDAO;
+    }
     
 }

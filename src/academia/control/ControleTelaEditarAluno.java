@@ -78,7 +78,8 @@ public class ControleTelaEditarAluno implements ActionListener {
             }
         }
         if (e.getSource() == tela.getBuscarB()) {
-            p = ControlePessoa.buscar(tela.getBuscarT(), 1);
+            p = ControlePessoa.buscar(tela.getBuscarT(),1);
+            
             if (p == null) {
                 JOptionPane.showMessageDialog(tela, "CPF não encontrado");
             } else {
