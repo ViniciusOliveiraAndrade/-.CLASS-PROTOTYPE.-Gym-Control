@@ -26,26 +26,26 @@ public class ControleTelaFunconario implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == telaFuncionairo.getCadastarFIntem()) {
-            telaFuncionairo.setDesk(new TelaCadastroFuncionario());
+            telaFuncionairo.getPainel().addFrame(new TelaCadastroFuncionario());
 
         }
         if (e.getSource() == telaFuncionairo.getCadastarIIntem()) {
-           telaFuncionairo.setDesk( new TelaCadastroInstrutor());
+           telaFuncionairo.getPainel().addFrame( new TelaCadastroInstrutor());
         }
         if (e.getSource() == telaFuncionairo.getCadastarAIntem()) {
-            telaFuncionairo.setDesk(new TelaCadastroAluno());
+            telaFuncionairo.getPainel().addFrame(new TelaCadastroAluno());
         }
-        if (e.getSource() == telaFuncionairo.getExitMenu()) {
+        if (e.getSource() == telaFuncionairo.getExitItem()) {
             System.exit(0);
         }
-        if (e.getSource() == telaFuncionairo.getEditarFuncionario()) {
-            telaFuncionairo.setDesk(new TelaEditarFI());
+        if (e.getSource() == telaFuncionairo.getEditarFuncionarioItem()) {
+            telaFuncionairo.getPainel().addFrame(new TelaEditarFI());
         }
-        if (e.getSource() == telaFuncionairo.getEditarAluno()) {
-            telaFuncionairo.setDesk(new TelaEditarAluno());
+        if (e.getSource() == telaFuncionairo.getEditarAlunoItem()) {
+            telaFuncionairo.getPainel().addFrame(new TelaEditarAluno());
         }
         if (e.getSource() == telaFuncionairo.getRemoverItemMenu()) {
-            telaFuncionairo.setDesk(new TelaRemover());
+            telaFuncionairo.getPainel().addFrame(new TelaRemover());
         }
     }
 

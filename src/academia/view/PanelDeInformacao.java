@@ -17,8 +17,7 @@ public class PanelDeInformacao extends JPanel {
         informacaoLabel = new JLabel(informacao);
         informacaoLabel.setBounds(10, 20,(dimension.width/4), 10);
         add(informacaoLabel);
-        
-        setBounds((dimension.width/4), (dimension.height/5),dimension.width-(dimension.width/4), 0);
+        setSize((dimension.width/4), (dimension.height/5));
         setLayout(null);
         setBorder(BorderFactory.createTitledBorder("Dados Pessoais"));
         setVisible(true);

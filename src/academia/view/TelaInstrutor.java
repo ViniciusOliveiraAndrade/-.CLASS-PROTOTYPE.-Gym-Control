@@ -1,6 +1,8 @@
 package academia.view;
 
+import academia.Academia;
 import academia.control.ControleTelaInstrutor;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Toolkit;
 import javax.swing.ImageIcon;
@@ -29,7 +31,14 @@ public class TelaInstrutor extends JFrame {
     
     private ControleTelaInstrutor controle;
     
+    private Dimension size;
+    private Painel painel;
+    
+    
     public TelaInstrutor() {
+        size = new Dimension(Toolkit.getDefaultToolkit().getScreenSize());
+        painel = new Painel(size,Academia.pessoaLogada.getNome());
+        
         controle = new ControleTelaInstrutor(this);
         
         menuBar = new JMenuBar();
@@ -50,9 +59,10 @@ public class TelaInstrutor extends JFrame {
         menuBar.add(avaliacaoMenu);
         
         setJMenuBar(menuBar);
+        getContentPane().add(painel);
         setTitle("Academia: Instrutor");
         setLayout(null);
-        setSize(800, 500);
+        setSize(size);
         setIconImage(new ImageIcon(Toolkit.getDefaultToolkit().getClass().getResource("/res/Icon.png")).getImage());
         setExtendedState( MAXIMIZED_BOTH );
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -66,18 +76,8 @@ public class TelaInstrutor extends JFrame {
         return avaliacaoItem;
     }
 
-    public void setAvaliacaoItem(JMenuItem avaliacaoItem) {
-        this.avaliacaoItem = avaliacaoItem;
-    }
-
     public JMenuItem getExitItem() {
         return exitItem;
     }
-
-    public void setExitItem(JMenuItem exitItem) {
-        this.exitItem = exitItem;
-    }
-    
-    
     
 }

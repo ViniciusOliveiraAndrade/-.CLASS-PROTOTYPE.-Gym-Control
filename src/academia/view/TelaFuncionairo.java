@@ -2,13 +2,10 @@ package academia.view;
 
 import academia.Academia;
 import academia.control.ControleTelaFunconario;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.ImageIcon;
-import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
-import javax.swing.JInternalFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -26,39 +23,28 @@ public class TelaFuncionairo extends JFrame {
 
     private JMenuBar menuBar;
 
-    private JMenu cadastrarMenu, file, editar,remover;
+    private JMenu cadastrarMenu, fileMenu, editarMenu,removerMenu;
 
-    private JMenuItem cadastarFIntem, cadastarIIntem, cadastarAIntem, exitMenu;
-    private JMenuItem editarAluno, editarFuncionario, editarInstrutor,removerItemMenu;
+    private JMenuItem cadastarFIntem, cadastarIIntem, cadastarAIntem, exitItem;
+    private JMenuItem editarAlunoItem, editarFuncionarioItem, editarInstrutorItem,removerItemMenu;
     
     private ControleTelaFunconario controle;
 
-    private JDesktopPane desk;
-
     private Dimension size;
-    private PanelDeInformacao panelDeInformacao;
-    
-//    private ImageIcon icon;
+    private Painel painel;
     
     public TelaFuncionairo() {
-//        icon = new ImageIcon("res\\Icon.png");
-       
+        size = new Dimension(Toolkit.getDefaultToolkit().getScreenSize());
+        painel = new Painel(size,Academia.pessoaLogada.getNome());
         controle = new ControleTelaFunconario(this);
+       
         menuBar = new JMenuBar();
 
         setJMenuBar(menuBar);
 
         cadastrarMenu = new JMenu("Cadastrar");
         cadastrarMenu.setMnemonic('C');
-        
-        size = new Dimension(Toolkit.getDefaultToolkit().getScreenSize());
-        panelDeInformacao = new PanelDeInformacao(Academia.pessoaLogada.getNome(),size);
-        
-        desk = new JDesktopPane();
-        desk.setSize(size.width-(size.width/4),size.height);
-        desk.setBackground(new Color(238,238,238));
-        desk.setLocation(0, 0);
-                
+       
         cadastarFIntem = new JMenuItem("Cadastar Funcionario");
         cadastarFIntem.addActionListener(controle);
 
@@ -72,48 +58,48 @@ public class TelaFuncionairo extends JFrame {
         cadastrarMenu.add(cadastarIIntem);
         cadastrarMenu.add(cadastarAIntem);
 
-        file = new JMenu("File");
-        file.setMnemonic('f');
+        fileMenu = new JMenu("File");
+        fileMenu.setMnemonic('f');
 
-        exitMenu = new JMenuItem("exit");
-        exitMenu.addActionListener(controle);
+        exitItem = new JMenuItem("exit");
+        exitItem.addActionListener(controle);
 
-        file.add(exitMenu);
+        fileMenu.add(exitItem);
 
-        editar = new JMenu("Editar");
-        editar.setMnemonic('e');
+        editarMenu = new JMenu("Editar");
+        editarMenu.setMnemonic('e');
         
-        editarAluno = new JMenuItem("Editar Cliente");
-        editarAluno.addActionListener(controle);
+        editarAlunoItem = new JMenuItem("Editar Cliente");
+        editarAlunoItem.addActionListener(controle);
         
-        editarFuncionario = new JMenuItem("Editar Funcionario/Instrutor");
-        editarFuncionario.addActionListener(controle);
+        editarFuncionarioItem = new JMenuItem("Editar Funcionario/Instrutor");
+        editarFuncionarioItem.addActionListener(controle);
         
-        remover = new JMenu("remover");
-        remover.setMnemonic('r');
+        removerMenu = new JMenu("remover");
+        removerMenu.setMnemonic('r');
         
         removerItemMenu = new JMenuItem("Remover");
         removerItemMenu.addActionListener(controle);
         
-        remover.add(removerItemMenu);
+        removerMenu.add(removerItemMenu);
         
-        editar.add(editarFuncionario);
-        editar.add(editarAluno);
+        editarMenu.add(editarFuncionarioItem);
+        editarMenu.add(editarAlunoItem);
         
         
         
         //============================ Iniciu menu=================================
         
-        menuBar.add(file);
+        menuBar.add(fileMenu);
         menuBar.add(cadastrarMenu);
-        menuBar.add(editar);
-        menuBar.add(remover);
-        add(panelDeInformacao);
-        getContentPane().add(desk);
-
+        menuBar.add(editarMenu);
+        menuBar.add(removerMenu);
+        
+        getContentPane().add(painel);
+//        add(painel);
         setTitle("Academia: Funcionario");
         setLayout(null);
-        setSize(800, 500);
+        setSize(size);
         setIconImage(new ImageIcon(Toolkit.getDefaultToolkit().getClass().getResource("/res/Icon.png")).getImage());
         setExtendedState( MAXIMIZED_BOTH );
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -129,53 +115,33 @@ public class TelaFuncionairo extends JFrame {
         return cadastarFIntem;
     }
 
-    public void setCadastarFIntem(JMenuItem cadastarFIntem) {
-        this.cadastarFIntem = cadastarFIntem;
-    }
-
     public JMenuItem getCadastarIIntem() {
         return cadastarIIntem;
-    }
-
-    public void setCadastarIIntem(JMenuItem cadastarIIntem) {
-        this.cadastarIIntem = cadastarIIntem;
     }
 
     public JMenuItem getCadastarAIntem() {
         return cadastarAIntem;
     }
 
-    public void setCadastarAIntem(JMenuItem cadastarAIntem) {
-        this.cadastarAIntem = cadastarAIntem;
+    public JMenuItem getExitItem() {
+        return exitItem;
     }
 
-    public JMenuItem getExitMenu() {
-        return exitMenu;
+    public JMenuItem getEditarAlunoItem() {
+        return editarAlunoItem;
     }
 
-    public void setExitMenu(JMenuItem exitMenu) {
-        this.exitMenu = exitMenu;
-    }
-
-    public JDesktopPane getDesk() {
-        return desk;
-    }
-
-    public void setDesk(JInternalFrame iframe) {
-        this.desk.add(iframe);
-    }
-
-    public JMenuItem getEditarAluno() {
-        return editarAluno;
-    }
-
-    public JMenuItem getEditarFuncionario() {
-        return editarFuncionario;
+    public JMenuItem getEditarFuncionarioItem() {
+        return editarFuncionarioItem;
     }
 
     public JMenuItem getRemoverItemMenu() {
         return removerItemMenu;
     }
-    
 
+    public Painel getPainel() {
+        return painel;
+    }
+    
+    
 }
