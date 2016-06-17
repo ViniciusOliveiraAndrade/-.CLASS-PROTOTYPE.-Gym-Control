@@ -44,5 +44,10 @@ public class Painel extends JPanel {
         this.desk.add(frame);
     }
     
+     public void atualizarTamanho(Dimension d){
+        setBounds(0,0,d.width,d.height);
+        desk.setBounds(0, 0, d.width - (d.width / 4), d.height);
+        pane.setBounds(d.width-(d.width/4), 0, d.width/4, d.height/5);
+    }
     
 }
