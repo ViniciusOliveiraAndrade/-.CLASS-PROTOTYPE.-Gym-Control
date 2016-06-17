@@ -79,5 +79,8 @@ public class TelaInstrutor extends JFrame {
     public JMenuItem getExitItem() {
         return exitItem;
     }
+    public Painel getPainel(){
+    return painel;
+    }
     
 }

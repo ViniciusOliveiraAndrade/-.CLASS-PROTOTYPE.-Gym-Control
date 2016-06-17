@@ -36,14 +36,4 @@ public class Util {
         }
         return F_Mascara;
     }
-
-    public void atualizarTela(Painel painel, Dimension d){
-		while(true)
-                {
-			painel.atualizarTamanho(d);
-			try {
-				Thread.sleep(30);
-			} catch (InterruptedException e) {e.printStackTrace();}
-		}
-	}
 }

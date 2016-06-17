@@ -2,6 +2,7 @@ package academia.view;
 
 import academia.Academia;
 import academia.control.ControleTelaFunconario;
+import academia.control.ControleTelas;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.ImageIcon;
@@ -14,7 +15,7 @@ import javax.swing.JMenuItem;
  *
  * @author vinicius
  */
-public class TelaFuncionairo extends JFrame {
+public class TelaFuncionairo extends JFrame{
 
     /**
      *
@@ -32,12 +33,13 @@ public class TelaFuncionairo extends JFrame {
 
     private Dimension size;
     private Painel painel;
-    
+    private ControleTelas atualizar;
     public TelaFuncionairo() {
         size = new Dimension(Toolkit.getDefaultToolkit().getScreenSize());
         painel = new Painel(size,Academia.pessoaLogada.getNome());
+        atualizar =new ControleTelas(this);
+        atualizar.start();
         controle = new ControleTelaFunconario(this);
-       
         menuBar = new JMenuBar();
 
         setJMenuBar(menuBar);
@@ -96,7 +98,6 @@ public class TelaFuncionairo extends JFrame {
         menuBar.add(removerMenu);
         
         getContentPane().add(painel);
-//        add(painel);
         setTitle("Academia: Funcionario");
         setLayout(null);
         setSize(size);
@@ -106,8 +107,9 @@ public class TelaFuncionairo extends JFrame {
         setLocationRelativeTo(null);
         setResizable(true);
         setVisible(true);
+        
     }
-
+ 
     /*
     =================================Gets & Sets===========================    
      */
@@ -142,6 +144,5 @@ public class TelaFuncionairo extends JFrame {
     public Painel getPainel() {
         return painel;
     }
-    
-    
+
 }
