@@ -36,7 +36,8 @@ public class TelaFuncionairo extends JFrame{
     private ControleTelas atualizar;
     public TelaFuncionairo() {
         size = new Dimension(Toolkit.getDefaultToolkit().getScreenSize());
-        painel = new Painel(size,Academia.pessoaLogada.getNome());
+//        painel = new Painel(size,Academia.pessoaLogada.getNome());
+        painel = new Painel(size,"logo");
         atualizar =new ControleTelas(this);
         atualizar.start();
         controle = new ControleTelaFunconario(this);

@@ -1,5 +1,6 @@
 package academia.control;
 
+import academia.model.DadosPessoa;
 import academia.model.Endereco;
 import academia.model.Pessoa;
 import academia.view.TelaCadastroAluno;
@@ -39,27 +40,31 @@ public class ControleTelaCadastroAluno implements ActionListener {
             telaCadastro.setPesoF("");
         }
         if (e.getSource() == telaCadastro.getCadastrarB()) {
-            Endereco endereco = new Endereco(telaCadastro.getRuaF(), telaCadastro.getBairroF(), Integer.parseInt(telaCadastro.getNumeroF()), telaCadastro.getCepF());
-            Pessoa p = new Pessoa(telaCadastro.getNomeF(), telaCadastro.getCpfF(), telaCadastro.getTelefoneF(), telaCadastro.getSenhaF(), null,telaCadastro.getAlturaF(),telaCadastro.getPesoF(),1);
-            telaCadastro.setNomeF("");
-            telaCadastro.setCepF("");
-            telaCadastro.setCpfF("");
-            telaCadastro.setSenhaF("");
-            telaCadastro.setTelefoneF("");
-            telaCadastro.setNumeroF("");
-            telaCadastro.setRuaF("");
-            telaCadastro.setBairroF("");
-            telaCadastro.setCepF("");
-            telaCadastro.setAlturaF("");
-            telaCadastro.setPesoF("");
-            try {
-                ControlePessoa.criar(p,endereco);
-                JOptionPane.showMessageDialog(telaCadastro, "Usuario Cadastrado");
-                
-            } catch (ConstraintViolationException constraintViolationException) {
-                JOptionPane.showMessageDialog(telaCadastro, "CPF Ja Cadastrado");
-                return;
-            }
+            if (ControlePessoa.buscarCPF(telaCadastro.getCpfF()) == null) {
+
+                Endereco endereco = new Endereco(telaCadastro.getRuaF(), telaCadastro.getBairroF(), Integer.parseInt(telaCadastro.getNumeroF()), telaCadastro.getCepF());
+                Pessoa p = new Pessoa(telaCadastro.getNomeF(), telaCadastro.getCpfF(), telaCadastro.getTelefoneF(), telaCadastro.getSenhaF(), null, telaCadastro.getAlturaF(), telaCadastro.getPesoF(), 1, null);
+                DadosPessoa d = new DadosPessoa(0, 0, 0, 0, 0);
+                telaCadastro.setNomeF("");
+                telaCadastro.setCepF("");
+                telaCadastro.setCpfF("");
+                telaCadastro.setSenhaF("");
+                telaCadastro.setTelefoneF("");
+                telaCadastro.setNumeroF("");
+                telaCadastro.setRuaF("");
+                telaCadastro.setBairroF("");
+                telaCadastro.setCepF("");
+                telaCadastro.setAlturaF("");
+                telaCadastro.setPesoF("");
+                try {
+                    ControlePessoa.criarAluno(p, endereco, d);
+                    JOptionPane.showMessageDialog(telaCadastro, "Usuario Cadastrado");
+
+                } catch (ConstraintViolationException constraintViolationException) {
+                    JOptionPane.showMessageDialog(telaCadastro, "CPF Ja Cadastrado");
+                    return;
+                }
+            }else{JOptionPane.showMessageDialog(telaCadastro, "CPF Ja Cadastrado");}
         }
 
     }

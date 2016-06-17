@@ -10,6 +10,7 @@
     <property name="connection.autocommit">true</property>
     <mapping class="academia.model.Pessoa"/>
     <mapping class="academia.model.Endereco"/>
+    <mapping class="academia.model.DadosPessoa"/>
 
   </session-factory>
 </hibernate-configuration>

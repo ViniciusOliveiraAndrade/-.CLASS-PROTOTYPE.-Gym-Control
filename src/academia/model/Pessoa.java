@@ -31,7 +31,10 @@ public class Pessoa implements Serializable {
 
     @OneToOne(cascade = CascadeType.ALL,orphanRemoval = true)
     private Endereco endereco;
-
+    
+    @OneToOne(cascade = CascadeType.ALL,orphanRemoval = true)
+    private DadosPessoa dados;
+    
     private double altura;
     private double peso;
     private double pagamento;
@@ -42,7 +45,7 @@ public class Pessoa implements Serializable {
     public Pessoa() {
     }
 
-    public Pessoa(String nome, String cpf, String telefone, String senha, Endereco endereco, double altura, double peso,int tipo) {
+    public Pessoa(String nome, String cpf, String telefone, String senha, Endereco endereco, double altura, double peso,int tipo, DadosPessoa dados) {
         this.nome = nome;
         this.cpf = cpf;
         this.senha = senha;
@@ -51,6 +54,7 @@ public class Pessoa implements Serializable {
         this.peso = peso;
         this.telefone = telefone;
         this.tipo = tipo;
+        this.dados = dados;
     }
 
     public Pessoa(String nome, String cpf, String telefone, String senha, Endereco endereco,int tipo) {
@@ -58,9 +62,9 @@ public class Pessoa implements Serializable {
         this.cpf = cpf;
         this.senha = senha;
         this.endereco = endereco;
-        this.pagamento = pagamento;
         this.telefone = telefone;
         this.tipo = tipo;
+        this.dados=null;
     }
 
 //    public void criar(Pessoa p,Endereco endereco) {
@@ -166,5 +170,15 @@ public class Pessoa implements Serializable {
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
+
+    public DadosPessoa getDados() {
+        return dados;
+    }
+
+    public void setDados(DadosPessoa dados) {
+        this.dados = dados;
+    }
+    
+    
 
 }
