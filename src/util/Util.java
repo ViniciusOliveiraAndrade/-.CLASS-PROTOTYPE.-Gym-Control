@@ -1,5 +1,7 @@
 package util;
 
+import academia.view.Painel;
+import java.awt.Dimension;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.text.MaskFormatter;
@@ -35,5 +37,13 @@ public class Util {
         return F_Mascara;
     }
 
-    
+    public void atualizarTela(Painel painel, Dimension d){
+		while(true)
+                {
+			painel.atualizarTamanho(d);
+			try {
+				Thread.sleep(30);
+			} catch (InterruptedException e) {e.printStackTrace();}
+		}
+	}
 }
