@@ -1,5 +1,6 @@
 package academia.control;
 
+import academia.model.Atividades;
 import academia.model.DadosPessoa;
 import academia.model.Endereco;
 import academia.model.Pessoa;
@@ -43,8 +44,9 @@ public class ControleTelaCadastroAluno implements ActionListener {
             if (ControlePessoa.buscarCPF(telaCadastro.getCpfF()) == null) {
 
                 Endereco endereco = new Endereco(telaCadastro.getRuaF(), telaCadastro.getBairroF(), Integer.parseInt(telaCadastro.getNumeroF()), telaCadastro.getCepF());
-                Pessoa p = new Pessoa(telaCadastro.getNomeF(), telaCadastro.getCpfF(), telaCadastro.getTelefoneF(), telaCadastro.getSenhaF(), null, telaCadastro.getAlturaF(), telaCadastro.getPesoF(), 1, null);
+                Pessoa p = new Pessoa(telaCadastro.getNomeF(), telaCadastro.getCpfF(), telaCadastro.getTelefoneF(), telaCadastro.getSenhaF(), null, telaCadastro.getAlturaF(), telaCadastro.getPesoF(), 1, null,null);
                 DadosPessoa d = new DadosPessoa(0, 0, 0, 0, 0);
+                Atividades ati = new Atividades(null, null, null, null, null, null, null);
                 telaCadastro.setNomeF("");
                 telaCadastro.setCepF("");
                 telaCadastro.setCpfF("");
@@ -57,7 +59,7 @@ public class ControleTelaCadastroAluno implements ActionListener {
                 telaCadastro.setAlturaF("");
                 telaCadastro.setPesoF("");
                 try {
-                    ControlePessoa.criarAluno(p, endereco, d);
+                    ControlePessoa.criarAluno(p, endereco, d,ati);
                     JOptionPane.showMessageDialog(telaCadastro, "Usuario Cadastrado");
 
                 } catch (ConstraintViolationException constraintViolationException) {

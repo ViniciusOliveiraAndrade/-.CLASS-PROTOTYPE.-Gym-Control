@@ -18,6 +18,34 @@ USE `academia`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `DadosPessoa`
+--
+
+DROP TABLE IF EXISTS `DadosPessoa`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `DadosPessoa` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `braco` double NOT NULL,
+  `cintura` double NOT NULL,
+  `coxa` double NOT NULL,
+  `panturrilha` double NOT NULL,
+  `quadril` double NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `DadosPessoa`
+--
+
+LOCK TABLES `DadosPessoa` WRITE;
+/*!40000 ALTER TABLE `DadosPessoa` DISABLE KEYS */;
+INSERT INTO `DadosPessoa` VALUES (2,4,30.1,2323,34,90.3);
+/*!40000 ALTER TABLE `DadosPessoa` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `Endereco`
 --
 
@@ -31,7 +59,7 @@ CREATE TABLE `Endereco` (
   `numero` int(11) NOT NULL,
   `rua` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +68,7 @@ CREATE TABLE `Endereco` (
 
 LOCK TABLES `Endereco` WRITE;
 /*!40000 ALTER TABLE `Endereco` DISABLE KEYS */;
-INSERT INTO `Endereco` VALUES (1,'Admin Admin Admin','11111111',111111,'Admin Admin Admin');
+INSERT INTO `Endereco` VALUES (1,'Admin','11111111',1,'Admin'),(2,'2','22222222',2,'2'),(4,'Aluno','33333333',3,'Aluno');
 /*!40000 ALTER TABLE `Endereco` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -61,12 +89,15 @@ CREATE TABLE `Pessoa` (
   `senha` varchar(255) DEFAULT NULL,
   `telefone` varchar(255) DEFAULT NULL,
   `tipo` int(11) NOT NULL,
+  `dados_id` int(11) DEFAULT NULL,
   `endereco_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UK_gej40f8jfd5efnwlggtpwjloo` (`cpf`),
+  KEY `FK_hjppigkb7xq56vy5rt9g4dehr` (`dados_id`),
   KEY `FK_buhd5wq46ssq3db3crto3qptb` (`endereco_id`),
-  CONSTRAINT `FK_buhd5wq46ssq3db3crto3qptb` FOREIGN KEY (`endereco_id`) REFERENCES `Endereco` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+  CONSTRAINT `FK_buhd5wq46ssq3db3crto3qptb` FOREIGN KEY (`endereco_id`) REFERENCES `Endereco` (`id`),
+  CONSTRAINT `FK_hjppigkb7xq56vy5rt9g4dehr` FOREIGN KEY (`dados_id`) REFERENCES `DadosPessoa` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -75,7 +106,7 @@ CREATE TABLE `Pessoa` (
 
 LOCK TABLES `Pessoa` WRITE;
 /*!40000 ALTER TABLE `Pessoa` DISABLE KEYS */;
-INSERT INTO `Pessoa` VALUES (1,0,'11111111111','Admin',0,0,'1','11111111111',2,1);
+INSERT INTO `Pessoa` VALUES (1,0,'11111111111','Admin',0,0,'1','11111111111',2,NULL,1),(2,0,'22222222222','Instrutor',0,0,'2','22222222222',3,NULL,2),(4,1.78,'33333333333','Aluno',0,76.8,'3','33333333333',1,2,4);
 /*!40000 ALTER TABLE `Pessoa` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -88,4 +119,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-05-18 11:24:13
+-- Dump completed on 2016-06-18 14:49:45

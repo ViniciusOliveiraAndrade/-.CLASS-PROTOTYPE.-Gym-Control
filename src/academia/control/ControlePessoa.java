@@ -1,6 +1,7 @@
 package academia.control;
 
 import academia.HibernateUtil;
+import academia.model.Atividades;
 import academia.model.DadosPessoa;
 import academia.model.Endereco;
 import academia.model.Pessoa;
@@ -19,11 +20,15 @@ public class ControlePessoa {
         Pessoa.pessoaDAO().save(p);
 
     }
-    public static void criarAluno(Pessoa p, Endereco endereco,DadosPessoa d) {
+    public static void criarAluno(Pessoa p, Endereco endereco,DadosPessoa d,Atividades ati) {
         Endereco.enderecoDAO().save(endereco);
         DadosPessoa.dadosPessoaDAO().save(d);
+        Atividades.atividadesDAO().save(ati);
+        
         p.setEndereco(endereco);
         p.setDados(d);
+        p.setAtividades(ati);
+        
         Pessoa.pessoaDAO().save(p);
 
     }
