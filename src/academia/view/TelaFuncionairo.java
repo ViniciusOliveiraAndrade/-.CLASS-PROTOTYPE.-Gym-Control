@@ -64,7 +64,7 @@ public class TelaFuncionairo extends JFrame{
         fileMenu = new JMenu("File");
         fileMenu.setMnemonic('f');
 
-        exitItem = new JMenuItem("exit");
+        exitItem = new JMenuItem("Exit");
         exitItem.addActionListener(controle);
 
         fileMenu.add(exitItem);
@@ -78,7 +78,7 @@ public class TelaFuncionairo extends JFrame{
         editarFuncionarioItem = new JMenuItem("Editar Funcionario/Instrutor");
         editarFuncionarioItem.addActionListener(controle);
         
-        removerMenu = new JMenu("remover");
+        removerMenu = new JMenu("Remover");
         removerMenu.setMnemonic('r');
         
         removerItemMenu = new JMenuItem("Remover");

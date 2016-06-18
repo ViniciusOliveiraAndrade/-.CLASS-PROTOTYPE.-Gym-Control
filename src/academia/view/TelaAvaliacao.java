@@ -45,7 +45,7 @@ public class TelaAvaliacao extends JInternalFrame {
 
     private ControleTelaAvaliacao controle;
     public TelaAvaliacao() {
-
+        controle = new ControleTelaAvaliacao(this);
         util = new Util();
         imagem = new JLabel();
         add(imagem);
@@ -78,16 +78,17 @@ public class TelaAvaliacao extends JInternalFrame {
         panturrilhaF = new JTextField(5);
 
         cadastrarB = new JButton("Cadastrar");
-//        cadastrarB.addActionListener(controle);
+        cadastrarB.addActionListener(controle);
 
         limparB = new JButton("Limpar");
-//        limparB.addActionListener(controle);
+        limparB.addActionListener(controle);
 
         sairB = new JButton("sair");
-//        sairB.addActionListener(controle);
+        sairB.addActionListener(controle);
 
         buscarPessoa = new JButton("Buscar");
-//        buscarPessoa.addActionListener(controle);
+        buscarPessoa.addActionListener(controle);
+        
         imagem.add(cpfL);
         imagem.add(cpfF);
         
@@ -127,8 +128,8 @@ public class TelaAvaliacao extends JInternalFrame {
         cpfL.setBounds(10, 10, 43, 10);
         cpfF.setBounds(55, 5, 170, 20);
 
-        bracoL.setBounds(245, 35, 53, 10);
-        bracoF.setBounds(295, 30, 50, 20);
+        bracoL.setBounds(260, 85, 53, 10);
+        bracoF.setBounds(310, 80, 50, 20);
 
         alturaL.setBounds(10, 60, 53, 10);
         alturaF.setBounds(56, 55, 53, 20);
@@ -160,7 +161,6 @@ public class TelaAvaliacao extends JInternalFrame {
         setSize(500, 190);
         setVisible(true);
         setResizable(false);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
     public String getNomeF() {
@@ -172,7 +172,7 @@ public class TelaAvaliacao extends JInternalFrame {
     }
 
     public String getCpfF() {
-        return cpfF.getText().replaceAll(".-", "");
+        return cpfF.getText().replaceAll("[. -]", "");
     }
 
     public void setCpfF(String cpf) {
@@ -241,6 +241,14 @@ public class TelaAvaliacao extends JInternalFrame {
 
     public JButton getBuscarPessoa() {
         return buscarPessoa;
+    }
+
+    public double getQuadrilF() {
+        return Double.parseDouble(quadrilF.getText().replaceAll(",", "."));
+    }
+
+    public void setQuadrilF(double quadrilF) {
+        this.quadrilF.setText(String.valueOf(quadrilF));
     }
 
     

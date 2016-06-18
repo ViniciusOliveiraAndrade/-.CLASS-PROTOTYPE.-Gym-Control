@@ -27,6 +27,7 @@ public class ControleTelaAvaliacao implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == tela.getBuscarPessoa()) {
+            System.out.println(tela.getCpfF());
             p = ControlePessoa.buscar(tela.getCpfF(), 1);
 
             if (p == null) {
@@ -92,7 +93,7 @@ public class ControleTelaAvaliacao implements ActionListener {
 
         }
         if (e.getSource() == tela.getSairB()) {
-            System.exit(0);
+            tela.dispose();
         }
     }
 
