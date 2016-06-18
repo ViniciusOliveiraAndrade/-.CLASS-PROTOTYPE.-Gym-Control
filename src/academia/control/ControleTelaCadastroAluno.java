@@ -46,7 +46,8 @@ public class ControleTelaCadastroAluno implements ActionListener {
                 Endereco endereco = new Endereco(telaCadastro.getRuaF(), telaCadastro.getBairroF(), Integer.parseInt(telaCadastro.getNumeroF()), telaCadastro.getCepF());
                 Pessoa p = new Pessoa(telaCadastro.getNomeF(), telaCadastro.getCpfF(), telaCadastro.getTelefoneF(), telaCadastro.getSenhaF(), null, telaCadastro.getAlturaF(), telaCadastro.getPesoF(), 1, null,null);
                 DadosPessoa d = new DadosPessoa(0, 0, 0, 0, 0);
-                Atividades ati = new Atividades(null, null, null, null, null, null, null);
+                String [] at= {"oi","oi","ola","oi","oi"};
+                Atividades ati = new Atividades(at, at, at, at, at, at, at);
                 telaCadastro.setNomeF("");
                 telaCadastro.setCepF("");
                 telaCadastro.setCpfF("");

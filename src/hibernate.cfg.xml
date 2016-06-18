@@ -11,6 +11,7 @@
     <mapping class="academia.model.Pessoa"/>
     <mapping class="academia.model.Endereco"/>
     <mapping class="academia.model.DadosPessoa"/>
+    <mapping class="academia.model.Atividades"/>
 
   </session-factory>
 </hibernate-configuration>

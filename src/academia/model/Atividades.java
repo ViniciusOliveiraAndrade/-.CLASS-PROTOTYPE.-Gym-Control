@@ -28,7 +28,7 @@ public class Atividades implements Serializable {
     private String[] sabado;
     private String[] domingo;
 
-    @OneToOne(mappedBy = "atividade")
+    @OneToOne(mappedBy = "atividades")
     private Pessoa pessoa;
 
     public Atividades() {
