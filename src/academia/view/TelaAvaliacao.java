@@ -1,5 +1,6 @@
 package academia.view;
 
+import academia.control.ControleTelaAvaliacao;
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.JInternalFrame;
@@ -39,8 +40,10 @@ public class TelaAvaliacao extends JInternalFrame {
     private JButton limparB;
     private JButton sairB;
     private JButton buscarPessoa;
+    
     private Util util;
 
+    private ControleTelaAvaliacao controle;
     public TelaAvaliacao() {
 
         util = new Util();
@@ -160,4 +163,85 @@ public class TelaAvaliacao extends JInternalFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
+    public String getNomeF() {
+        return nomeF.getText();
+    }
+
+    public void setNomeF(String nome) {
+        this.nomeF.setText(nome);
+    }
+
+    public String getCpfF() {
+        return cpfF.getText().replaceAll(".-", "");
+    }
+
+    public void setCpfF(String cpf) {
+        this.cpfF.setText(cpf);
+    }
+
+    public double getBracoF() {
+        return Double.parseDouble(bracoF.getText().replaceAll(",", "."));
+    }
+
+    public void setBracoF(double braco) {
+        this.bracoF.setText(String.valueOf(braco));
+    }
+
+    public double getCinturaF() {
+        return Double.parseDouble(cinturaF.getText().replaceAll(",", "."));
+    }
+
+    public void setCinturaF(double c) {
+        this.cinturaF.setText(String.valueOf(c));
+    }
+
+    public double getCoxaF() {
+        return Double.parseDouble(coxaF.getText().replaceAll(",", "."));
+    }
+
+    public void setCoxaF(double c) {
+        this.coxaF.setText(String.valueOf(c));
+    }
+
+    public double getPanturrilhaF() {
+        return Double.parseDouble(panturrilhaF.getText().replaceAll(",", "."));
+    }
+
+    public void setPanturrilhaF(double c) {
+        this.panturrilhaF.setText(String.valueOf(c));
+    }
+
+    public double getAlturaF() {
+        return Double.parseDouble(alturaF.getText().replaceAll(",", "."));
+    }
+
+    public void setAlturaF(double c) {
+        this.alturaF.setText(String.valueOf(c));
+    }
+
+    public double getPesoF() {
+        return Double.parseDouble(pesoF.getText().replaceAll(",", "."));
+    }
+
+    public void setPesoF(double c) {
+        this.pesoF.setText(String.valueOf(c));
+    }
+
+    public JButton getCadastrarB() {
+        return cadastrarB;
+    }
+
+    public JButton getLimparB() {
+        return limparB;
+    }
+
+    public JButton getSairB() {
+        return sairB;
+    }
+
+    public JButton getBuscarPessoa() {
+        return buscarPessoa;
+    }
+
+    
 }
