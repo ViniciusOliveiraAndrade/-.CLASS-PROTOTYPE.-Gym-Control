@@ -2,8 +2,7 @@ package academia.view;
 
 import academia.Academia;
 import academia.control.ControlePessoa;
-import academia.control.ControleTelas;
-import academia.model.Pessoa;
+import academia.control.ControleTelaAluno;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.ImageIcon;
@@ -31,22 +30,22 @@ public class TelaAluno extends JFrame {
 
     private Dimension size;
     private Painel painel;
-
+    private ControleTelaAluno controle;
     public TelaAluno() {
         size = new Dimension(Toolkit.getDefaultToolkit().getScreenSize());
         setSize(size);
-
+        controle = new ControleTelaAluno(this);
         painel = new Painel(getSize(), Academia.pessoaLogada.getNome());
-
+        controle.atividade(this);
         menuBar = new JMenuBar();
 
         file = new JMenu("File");
 
         exitItem = new JMenuItem("Exit");
-//        exitItem.addActionListener(controle);
+        exitItem.addActionListener(controle);
 
         atividades = new JMenuItem("Atividades");
-//        atividades.addActionListener(controle);
+        atividades.addActionListener(controle);
 
         file.add(exitItem);
 

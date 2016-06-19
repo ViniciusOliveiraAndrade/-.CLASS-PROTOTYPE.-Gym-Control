@@ -96,7 +96,7 @@ public class Atividades implements Serializable {
                 array.add(".");
             }
         } else {
-            segunda= segunda.substring(1);
+            
             String segundaA[] = segunda.split(":");
 
             for (int z = 0; z < segundaA.length; z++) {
@@ -113,7 +113,7 @@ public class Atividades implements Serializable {
         for (String a : array) {
             segunda += ":" + a;
         }
-        segunda.replaceFirst(":", "");
+       segunda= segunda.substring(1);
 
     }
 

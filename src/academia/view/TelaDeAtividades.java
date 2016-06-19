@@ -150,5 +150,8 @@ public class TelaDeAtividades extends JInternalFrame {
         this.cpfF.setText(cpfF);
     }
     
-    
+    public void cpfVisi(boolean a){
+    cpfF.setVisible(a);
+    cpfL.setVisible(a);
+    }
 }
