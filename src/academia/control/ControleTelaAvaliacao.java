@@ -71,7 +71,7 @@ public class ControleTelaAvaliacao implements ActionListener {
                     tela.setPanturrilhaF(0);
                     tela.setPesoF(0);
                     tela.setQuadrilF(0);
-
+                    p=null;
                 } catch (ConstraintViolationException constraintViolationException) {
                     JOptionPane.showMessageDialog(tela, "Não pode comcluir a Alteração");
                     return;

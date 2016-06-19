@@ -59,6 +59,7 @@ public class ControleTelaEditarFI implements ActionListener {
                     tela.setRuaF("");
                     tela.setBairroF("");
                     tela.setBuscarT("");
+                    p=null;
                 } catch (ConstraintViolationException constraintViolationException) {
                     JOptionPane.showMessageDialog(tela, "Não pode comcluir a Alteração");
                     return;

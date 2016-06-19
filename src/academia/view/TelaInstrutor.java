@@ -2,6 +2,7 @@ package academia.view;
 
 import academia.Academia;
 import academia.control.ControleTelaInstrutor;
+import academia.control.ControleTelas;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.ImageIcon;
@@ -32,12 +33,13 @@ public class TelaInstrutor extends JFrame {
     
     private Dimension size;
     private Painel painel;
-    
+    private ControleTelas atualizar;
     
     public TelaInstrutor() {
         size = new Dimension(Toolkit.getDefaultToolkit().getScreenSize());
         painel = new Painel(size,Academia.pessoaLogada.getNome());
-        
+         atualizar =new ControleTelas(this);
+        atualizar.start();
         controle = new ControleTelaInstrutor(this);
         
         menuBar = new JMenuBar();

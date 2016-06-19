@@ -67,6 +67,7 @@ public class ControleTelaAtividades implements ActionListener {
                         t.setText("");
                     }
                     tela.setCpfF("");
+                    p=null;
 
                 } catch (ConstraintViolationException constraintViolationException) {
                     JOptionPane.showMessageDialog(tela, "Não pode comcluir a Alteração");

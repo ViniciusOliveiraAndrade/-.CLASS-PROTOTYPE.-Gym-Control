@@ -70,6 +70,7 @@ public class ControleTelaEditarAluno implements ActionListener {
                     tela.setBuscarT("");
                     tela.setAlturaF("");
                     tela.setPesoF("");
+                    p=null;
 
                 } catch (ConstraintViolationException constraintViolationException) {
                     JOptionPane.showMessageDialog(tela, "Não pode comcluir a Alteração");
