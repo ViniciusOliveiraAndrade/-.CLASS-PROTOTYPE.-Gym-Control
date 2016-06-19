@@ -5,6 +5,7 @@ import academia.control.ControleTelaFunconario;
 import academia.control.ControleTelas;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -146,4 +147,6 @@ public class TelaFuncionairo extends JFrame{
         return painel;
     }
 
+    
+    
 }

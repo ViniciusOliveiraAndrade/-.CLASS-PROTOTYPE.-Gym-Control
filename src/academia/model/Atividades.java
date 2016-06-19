@@ -4,6 +4,7 @@ import academia.HibernateUtil;
 import academia.model.DAO.HibernateDAO;
 import academia.model.DAO.InterfaceDAO;
 import java.io.Serializable;
+import java.util.ArrayList;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -20,13 +21,7 @@ public class Atividades implements Serializable {
     @GeneratedValue
     private Integer id;
 
-    private String[] segunda;
-    private String[] terca;
-    private String[] quarta;
-    private String[] quinta;
-    private String[] sexta;
-    private String[] sabado;
-    private String[] domingo;
+    private String segunda;
 
     @OneToOne(mappedBy = "atividades")
     private Pessoa pessoa;
@@ -34,70 +29,92 @@ public class Atividades implements Serializable {
     public Atividades() {
     }
 
-    public Atividades(String[] segunda, String[] terca, String[] quarta, String[] quinta, String[] sexta, String[] sabado, String[] domingo) {
+    public Atividades(String segunda) {
         this.segunda = segunda;
-        this.terca = terca;
-        this.quarta = quarta;
-        this.quinta = quinta;
-        this.sexta = sexta;
-        this.sabado = sabado;
-        this.domingo = domingo;
     }
 
-    public String[] getSegunda() {
+    public String getSegunda() {
         return segunda;
     }
 
-    public void setSegunda(String[] segunda) {
+    public void setSegunda(String segunda) {
         this.segunda = segunda;
     }
 
-    public String[] getTerca() {
-        return terca;
+//    public String getTerca() {
+//        return terca;
+//    }
+//
+//    public void setTerca(String terca) {
+//        this.terca = terca;
+//    }
+//
+//    public String getQuarta() {
+//        return quarta;
+//    }
+//
+//    public void setQuarta(String quarta) {
+//        this.quarta = quarta;
+//    }
+//
+//    public String getQuinta() {
+//        return quinta;
+//    }
+//
+//    public void setQuinta(String quinta) {
+//        this.quinta = quinta;
+//    }
+//
+//    public String getSexta() {
+//        return sexta;
+//    }
+//
+//    public void setSexta(String sexta) {
+//        this.sexta = sexta;
+//    }
+//
+//    public String getSabado() {
+//        return sabado;
+//    }
+//
+//    public void setSabado(String sabado) {
+//        this.sabado = sabado;
+//    }
+//
+//    public String getDomingo() {
+//        return domingo;
+//    }
+//
+//    public void setDomingo(String domingo) {
+//        this.domingo = domingo;
+//    }
+    public ArrayList getArray() {
+        ArrayList<String> array = new ArrayList();
+
+        if (segunda.isEmpty()) {
+            for (int a = 0; a < 35; a++) {
+                array.add(".");
+            }
+        } else {
+            segunda= segunda.substring(1);
+            String segundaA[] = segunda.split(":");
+
+            for (int z = 0; z < segundaA.length; z++) {
+                array.add(segundaA[z]);
+                
+            }
+        }
+        return array;
+
     }
 
-    public void setTerca(String[] terca) {
-        this.terca = terca;
-    }
+    public void setArray(ArrayList<String> array) {
+        segunda ="";
+        for (String a : array) {
+            segunda += ":" + a;
+        }
+        segunda.replaceFirst(":", "");
 
-    public String[] getQuarta() {
-        return quarta;
-    }
-
-    public void setQuarta(String[] quarta) {
-        this.quarta = quarta;
-    }
-
-    public String[] getQuinta() {
-        return quinta;
-    }
-
-    public void setQuinta(String[] quinta) {
-        this.quinta = quinta;
-    }
-
-    public String[] getSexta() {
-        return sexta;
-    }
-
-    public void setSexta(String[] sexta) {
-        this.sexta = sexta;
-    }
-
-    public String[] getSabado() {
-        return sabado;
-    }
-
-    public void setSabado(String[] sabado) {
-        this.sabado = sabado;
-    }
-
-    public String[] getDomingo() {
-        return domingo;
-    }
-
-    public void setDomingo(String[] domingo) {
-        this.domingo = domingo;
     }
 
     public static InterfaceDAO<Atividades> atividadesDAO() {

@@ -3,7 +3,6 @@ package academia.view;
 import academia.Academia;
 import academia.control.ControleTelaInstrutor;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Toolkit;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -26,7 +25,7 @@ public class TelaInstrutor extends JFrame {
 
     private JMenu avaliacaoMenu, file;
 
-    private JMenuItem avaliacaoItem, exitItem;
+    private JMenuItem avaliacaoItem, exitItem, atividades;
     
     
     private ControleTelaInstrutor controle;
@@ -51,9 +50,14 @@ public class TelaInstrutor extends JFrame {
         
         exitItem = new JMenuItem("Exit");
         exitItem.addActionListener(controle);
+        
+        atividades = new JMenuItem("Atividades");
+        atividades.addActionListener(controle);
        
         file.add(exitItem);
+        
         avaliacaoMenu.add(avaliacaoItem);
+        avaliacaoMenu.add(atividades);
         
         menuBar.add(file);
         menuBar.add(avaliacaoMenu);
@@ -81,6 +85,10 @@ public class TelaInstrutor extends JFrame {
     }
     public Painel getPainel(){
     return painel;
+    }
+
+    public JMenuItem getAtividades() {
+        return atividades;
     }
     
 }
