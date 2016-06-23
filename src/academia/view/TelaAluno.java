@@ -3,6 +3,7 @@ package academia.view;
 import academia.Academia;
 import academia.control.ControlePessoa;
 import academia.control.ControleTelaAluno;
+import academia.control.ControleTelas;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.ImageIcon;
@@ -31,11 +32,16 @@ public class TelaAluno extends JFrame {
     private Dimension size;
     private Painel painel;
     private ControleTelaAluno controle;
+    private ControleTelas atualiza;
+
     public TelaAluno() {
         size = new Dimension(Toolkit.getDefaultToolkit().getScreenSize());
         setSize(size);
+
         controle = new ControleTelaAluno(this);
         painel = new Painel(getSize(), Academia.pessoaLogada.getNome());
+        atualiza = new ControleTelas(this);
+        atualiza.start();
         controle.atividade(this);
         menuBar = new JMenuBar();
 
@@ -81,26 +87,25 @@ public class TelaAluno extends JFrame {
     public void dadosAluno() {
         JLabel imc, braco, quadril, cintura, coxa, panturrilha;
         imc = new JLabel("IMC: " + ControlePessoa.imc(Academia.pessoaLogada));
-        imc.setBounds(10, 40,(size.width/4), 10);
-        
+        imc.setBounds(10, 35, (size.width / 4), 10);
+
         braco = new JLabel("Braço: " + Academia.pessoaLogada.getDados().getBraco());
-        braco.setBounds(10, 60,(size.width/4), 10);
-        
+        braco.setBounds(10, 50, (size.width / 4), 10);
+
         quadril = new JLabel("Quadril: " + Academia.pessoaLogada.getDados().getQuadril());
-        quadril.setBounds(10, 80,(size.width/4), 10);
-        
+        quadril.setBounds(10, 65, (size.width / 4), 10);
+
         cintura = new JLabel("Cintura: " + Academia.pessoaLogada.getDados().getCintura());
-        cintura.setBounds(10, 100,(size.width/4), 10);
-        
+        cintura.setBounds(10, 80, (size.width / 4), 10);
+
         coxa = new JLabel("Coxa: " + Academia.pessoaLogada.getDados().getCoxa());
-        coxa.setBounds(10, 120,(size.width/4), 10);
-        
+        coxa.setBounds(10, 95, (size.width / 4), 10);
+
         panturrilha = new JLabel("Panturrilha: " + Academia.pessoaLogada.getDados().getPanturrilha());
-        panturrilha.setBounds(10, 140,(size.width/4), 10);
-        
-        painel.getPane().setSize(size.width/4, size.height/3);
-        
-        
+        panturrilha.setBounds(10, 110, (size.width / 4), 10);
+
+        painel.getPane().setSize(size.width / 4, size.height / 3);
+
         painel.getPane().add(imc);
         painel.getPane().add(braco);
         painel.getPane().add(quadril);

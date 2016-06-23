@@ -16,7 +16,7 @@ import javax.swing.JMenuItem;
  *
  * @author vinicius
  */
-public class TelaFuncionairo extends JFrame{
+public class TelaFuncionairo extends JFrame {
 
     /**
      *
@@ -25,21 +25,22 @@ public class TelaFuncionairo extends JFrame{
 
     private JMenuBar menuBar;
 
-    private JMenu cadastrarMenu, fileMenu, editarMenu,removerMenu;
+    private JMenu cadastrarMenu, fileMenu, editarMenu, removerMenu;
 
     private JMenuItem cadastarFIntem, cadastarIIntem, cadastarAIntem, exitItem;
-    private JMenuItem editarAlunoItem, editarFuncionarioItem, editarInstrutorItem,removerItemMenu;
-    
+    private JMenuItem editarAlunoItem, editarFuncionarioItem, editarInstrutorItem, removerItemMenu;
+
     private ControleTelaFunconario controle;
 
     private Dimension size;
     private Painel painel;
     private ControleTelas atualizar;
+
     public TelaFuncionairo() {
         size = new Dimension(Toolkit.getDefaultToolkit().getScreenSize());
-        painel = new Painel(size,Academia.pessoaLogada.getNome());
+        painel = new Painel(size, Academia.pessoaLogada.getNome());
 //        painel = new Painel(size,"logo");
-        atualizar =new ControleTelas(this);
+        atualizar = new ControleTelas(this);
         atualizar.start();
         controle = new ControleTelaFunconario(this);
         menuBar = new JMenuBar();
@@ -48,7 +49,7 @@ public class TelaFuncionairo extends JFrame{
 
         cadastrarMenu = new JMenu("Cadastrar");
         cadastrarMenu.setMnemonic('C');
-       
+
         cadastarFIntem = new JMenuItem("Cadastar Funcionario");
         cadastarFIntem.addActionListener(controle);
 
@@ -72,46 +73,43 @@ public class TelaFuncionairo extends JFrame{
 
         editarMenu = new JMenu("Editar");
         editarMenu.setMnemonic('e');
-        
+
         editarAlunoItem = new JMenuItem("Editar Cliente");
         editarAlunoItem.addActionListener(controle);
-        
+
         editarFuncionarioItem = new JMenuItem("Editar Funcionario/Instrutor");
         editarFuncionarioItem.addActionListener(controle);
-        
+
         removerMenu = new JMenu("Remover");
         removerMenu.setMnemonic('r');
-        
+
         removerItemMenu = new JMenuItem("Remover");
         removerItemMenu.addActionListener(controle);
-        
+
         removerMenu.add(removerItemMenu);
-        
+
         editarMenu.add(editarFuncionarioItem);
         editarMenu.add(editarAlunoItem);
-        
-        
-        
+
         //============================ Iniciu menu=================================
-        
         menuBar.add(fileMenu);
         menuBar.add(cadastrarMenu);
         menuBar.add(editarMenu);
         menuBar.add(removerMenu);
-        
+
         getContentPane().add(painel);
         setTitle("Academia: Funcionario");
         setLayout(null);
         setSize(size);
         setIconImage(new ImageIcon(Toolkit.getDefaultToolkit().getClass().getResource("/res/Icon.png")).getImage());
-        setExtendedState( MAXIMIZED_BOTH );
+        setExtendedState(MAXIMIZED_BOTH);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(true);
         setVisible(true);
-        
+
     }
- 
+
     /*
     =================================Gets & Sets===========================    
      */
@@ -147,6 +145,4 @@ public class TelaFuncionairo extends JFrame{
         return painel;
     }
 
-    
-    
 }

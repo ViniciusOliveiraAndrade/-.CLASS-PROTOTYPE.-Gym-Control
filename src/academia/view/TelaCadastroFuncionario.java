@@ -141,7 +141,7 @@ public class TelaCadastroFuncionario extends JInternalFrame {
 
         sairB.setBounds(200, 180, 90, 30);
 
-        cadastrarB.setBounds(380, 180, 100, 30);
+        cadastrarB.setBounds(380, 180, 110, 30);
 
         setTitle("Cadastro Funcioanrio");
         setSize(550, 300);

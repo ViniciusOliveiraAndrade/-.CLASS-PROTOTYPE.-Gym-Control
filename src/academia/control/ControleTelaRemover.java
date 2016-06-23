@@ -45,7 +45,7 @@ public class ControleTelaRemover implements ActionListener {
             } else {
                 try {
                     Pessoa.pessoaDAO().remove(p);
-                    JOptionPane.showMessageDialog(tela, "Remoção comcluida");
+                    JOptionPane.showMessageDialog(tela, "Remoção concluida");
                     tela.setNomeF("");
                     tela.setCepF("");
                     tela.setSenhaF("");
@@ -57,7 +57,7 @@ public class ControleTelaRemover implements ActionListener {
                     tela.setAlturaF("");
                     tela.setPesoF("");
                 } catch (ConstraintViolationException constraintViolationException) {
-                    JOptionPane.showMessageDialog(tela, "Não pode comcluir a Remoção");
+                    JOptionPane.showMessageDialog(tela, "Não pode concluir a Remoção");
                     return;
                 }
             }

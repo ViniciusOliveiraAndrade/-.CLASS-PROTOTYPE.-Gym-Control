@@ -69,13 +69,13 @@ public class TelaLogin extends JFrame {
         senhaField.setBounds(70, 35, 205, 20);
         senhaField.addKeyListener(controle.enterList());
         limparButton.setBounds(20, 62, 120, 25);
-        limparButton.setBackground(Color.red);
+//        limparButton.setBackground(Color.red);
 
         sairButton.setBounds(150, 62, 120, 25);
-        sairButton.setBackground(Color.red);
+//        sairButton.setBackground(Color.red);
 
         logarButton.setBounds(45, 93, 200, 25);
-        logarButton.setBackground(Color.GREEN);
+//        logarButton.setBackground(Color.GREEN);
         
         addKeyListener(controle.enterList());
         

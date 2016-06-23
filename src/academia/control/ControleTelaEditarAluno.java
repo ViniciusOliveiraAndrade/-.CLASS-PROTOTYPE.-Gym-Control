@@ -59,7 +59,7 @@ public class ControleTelaEditarAluno implements ActionListener {
 
                 try {
                     Pessoa.pessoaDAO().update(p);
-                    JOptionPane.showMessageDialog(tela, "Alteração comcluida");
+                    JOptionPane.showMessageDialog(tela, "Alteração concluida");
                     tela.setNomeF("");
                     tela.setCepF("");
                     tela.setSenhaF("");
@@ -73,7 +73,7 @@ public class ControleTelaEditarAluno implements ActionListener {
                     p=null;
 
                 } catch (ConstraintViolationException constraintViolationException) {
-                    JOptionPane.showMessageDialog(tela, "Não pode comcluir a Alteração");
+                    JOptionPane.showMessageDialog(tela, "Não pode concluir a Alteração");
                     return;
                 }
             }

@@ -160,7 +160,7 @@ public class TelaCadastroAluno extends JInternalFrame {
 
         sairB.setBounds(200, 180, 90, 30);
 
-        cadastrarB.setBounds(380, 180, 100, 30);
+        cadastrarB.setBounds(380, 180, 110, 30);
 
         setTitle("Cadastro de Cliente");
         setSize(550, 300);

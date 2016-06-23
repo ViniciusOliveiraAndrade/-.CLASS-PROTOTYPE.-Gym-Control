@@ -39,25 +39,28 @@ public class ControleTelaCadastroInstrutor implements ActionListener {
 
         }
         if (e.getSource() == tela.getCadastrarB()) {
+            try{
+                Endereco endereco = new Endereco(tela.getRuaF(), tela.getBairroF(), Integer.parseInt(tela.getNumeroF()), tela.getCepF());
+                Pessoa p = new Pessoa(tela.getNomeF(), tela.getCpfF(), tela.getTelefoneF(), tela.getSenhaF(), null, 3);
 
-            Endereco endereco = new Endereco(tela.getRuaF(), tela.getBairroF(), Integer.parseInt(tela.getNumeroF()), tela.getCepF());
-            Pessoa p = new Pessoa(tela.getNomeF(), tela.getCpfF(), tela.getTelefoneF(), tela.getSenhaF(), null,3);
+                try {
+                    ControlePessoa.criar(p, endereco);
+                    JOptionPane.showMessageDialog(tela, "Instrutor Cadastrado");
+                    tela.setNomeF("");
+                    tela.setCepF("");
+                    tela.setSenhaF("");
+                    tela.setTelefoneF("");
+                    tela.setNumeroF("");
+                    tela.setRuaF("");
+                    tela.setBairroF("");
+                    tela.setCpfF("");
 
-            try {
-                ControlePessoa.criar(p,endereco);
-                JOptionPane.showMessageDialog(tela, "Instrutor Cadastrado");
-                tela.setNomeF("");
-                tela.setCepF("");
-                tela.setSenhaF("");
-                tela.setTelefoneF("");
-                tela.setNumeroF("");
-                tela.setRuaF("");
-                tela.setBairroF("");
-                tela.setCpfF("");
-      
-            } catch (ConstraintViolationException constraintViolationException) {
-                JOptionPane.showMessageDialog(tela, "CPF Ja Cadastrado");
-                return;
+                } catch (ConstraintViolationException constraintViolationException) {
+                    JOptionPane.showMessageDialog(tela, "CPF Ja Cadastrado");
+                    return;
+                }
+             } catch (Exception ex) {
+                JOptionPane.showMessageDialog(tela, "Preencha todos os campos com dados validos");
             }
         }
     }

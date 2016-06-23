@@ -5,6 +5,7 @@
  */
 package academia.control;
 
+import academia.view.TelaAluno;
 import academia.view.TelaFuncionairo;
 import academia.view.TelaInstrutor;
 
@@ -14,8 +15,9 @@ import academia.view.TelaInstrutor;
  */
 public class ControleTelas extends Thread {
 
-    TelaFuncionairo tela;
-    TelaInstrutor telaI;
+    private TelaFuncionairo tela;
+    private TelaInstrutor telaI;
+    private TelaAluno telaA;
 
     public ControleTelas(TelaFuncionairo tela) {
         this.tela = tela;
@@ -25,11 +27,17 @@ public class ControleTelas extends Thread {
         this.telaI = telaI;
     }
 
+    public ControleTelas(TelaAluno telaA) {
+        this.telaA = telaA;
+    }
+
     public void run() {
 
         while (true) {
             if (telaI == null) {
-                tela.getPainel().atualizarTamanho(tela.getSize());
+                if (telaA == null) {
+                    tela.getPainel().atualizarTamanho(tela.getSize());
+                }else{telaA.getPainel().atualizarTamanho(telaA.getSize());}
             } else {
                 telaI.getPainel().atualizarTamanho(telaI.getSize());
             }
