@@ -99,7 +99,6 @@ public class TelaDeAtividades extends JInternalFrame {
         add(sairB);
         add(painel);
 
-        setTitle("Atividades");
         setSize(810, 340);
         setLayout(null);
 

@@ -5,6 +5,7 @@ import academia.model.Atividades;
 import academia.model.DadosPessoa;
 import academia.model.Endereco;
 import academia.model.Pessoa;
+import java.util.ArrayList;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 
@@ -48,7 +49,14 @@ public class ControlePessoa {
         Pessoa p = Pessoa.pessoaDAO().getEntityByCriteria(crit);
         return p;
     }
-
+    
+    public static ArrayList<Pessoa> listar(int tipo){
+        Criteria crit = HibernateUtil.getSessionFactory().openSession().createCriteria(Pessoa.class);
+        crit.add(Restrictions.eq("tipo", tipo));
+        ArrayList<Pessoa> array = (ArrayList)Pessoa.pessoaDAO().getListByCriteria(crit);
+        return array;
+    }
+    
     public static String imc(Pessoa p) {
         String imc;
         double imcD;

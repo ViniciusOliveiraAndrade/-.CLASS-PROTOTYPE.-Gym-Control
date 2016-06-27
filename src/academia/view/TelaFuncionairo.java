@@ -27,7 +27,7 @@ public class TelaFuncionairo extends JFrame {
 
     private JMenu cadastrarMenu, fileMenu, editarMenu, removerMenu;
 
-    private JMenuItem cadastarFIntem, cadastarIIntem, cadastarAIntem, exitItem;
+    private JMenuItem cadastarFIntem, cadastarIIntem, cadastarAIntem, exitItem, listarItem;
     private JMenuItem editarAlunoItem, editarFuncionarioItem, editarInstrutorItem, removerItemMenu;
 
     private ControleTelaFunconario controle;
@@ -68,9 +68,13 @@ public class TelaFuncionairo extends JFrame {
 
         exitItem = new JMenuItem("Exit");
         exitItem.addActionListener(controle);
-
+        
+        listarItem = new JMenuItem("Listar");
+        listarItem.addActionListener(controle);
+        
+        fileMenu.add(listarItem);
         fileMenu.add(exitItem);
-
+       
         editarMenu = new JMenu("Editar");
         editarMenu.setMnemonic('e');
 
@@ -145,4 +149,8 @@ public class TelaFuncionairo extends JFrame {
         return painel;
     }
 
+    public JMenuItem getListarItem() {
+        return listarItem;
+    }
+    
 }
