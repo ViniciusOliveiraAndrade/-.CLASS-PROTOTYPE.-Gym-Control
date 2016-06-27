@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JInternalFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -25,7 +26,7 @@ public class TelaListagem extends JInternalFrame {
     private JScrollPane scroll;
     private DefaultTableModel model;
     private ControleTelaListagem controle;
-    private JPanel painel,painelButton,painelPainel;
+    private JPanel painel,painelButton;
     private JButton listarClientes,listarFuncionario,listarInstrutor,listarGeral;
     
     public TelaListagem() {
@@ -55,11 +56,7 @@ public class TelaListagem extends JInternalFrame {
         painelButton.add(listarFuncionario);
         painelButton.add(listarInstrutor);
         painelButton.add(listarGeral);
-        
-//        painelPainel = new JPanel();
-//        painelPainel.setBorder(BorderFactory.createTitledBorder(""));
-//        painelPainel.add(painel); 
-        
+
         model = new DefaultTableModel();
         model.addColumn("Nome");
         model.addColumn("CPF");
@@ -80,7 +77,7 @@ public class TelaListagem extends JInternalFrame {
         add(painelButton,BorderLayout.NORTH);
         add(painel,BorderLayout.CENTER);
         
-        setTitle("Atividades");
+        setTitle("Cadastrados");
         setSize(700, 400);
         setClosable(true);
         setVisible(true);
@@ -91,9 +88,6 @@ public class TelaListagem extends JInternalFrame {
         
         try {
             if(model.getRowCount()!=0){ 
-//                for(int i = 0; i<model.getRowCount();i++){
-//                    model.removeRow(i++);
-//                }
                 model.setNumRows(0);
             }
             for(Pessoa a:p){
@@ -110,6 +104,7 @@ public class TelaListagem extends JInternalFrame {
             }
          } catch (Exception e) {
             e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Banco de dados não encontrado");
         }
     }
 
