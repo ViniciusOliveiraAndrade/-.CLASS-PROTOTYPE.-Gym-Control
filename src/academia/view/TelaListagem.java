@@ -100,7 +100,6 @@ public class TelaListagem extends JInternalFrame {
                             break;            
             }
             model.addRow(new Object[] {a.getNome(),""+a.getCpf().substring(0, 3)+"."+a.getCpf().substring(3, 6)+"."+a.getCpf().substring(6,9)+"-"+a.getCpf().substring(9, 11),a.getTelefone(),tipo});
-                System.out.println(tipo);
             }
          } catch (Exception e) {
             e.printStackTrace();
