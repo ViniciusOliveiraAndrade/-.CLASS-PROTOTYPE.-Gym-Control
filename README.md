@@ -4,7 +4,11 @@
 
 This prototype needs Java 7 onwards, Hibernate 4 and  Mysql connector java version 5.1.23.
 
-All jar in lib folder. 
+All jar in lib folder.
+
+## Introduction
+
+This is a system that control the Gym user activities, and the trainer recommendations.
 
 ## To be define
 
